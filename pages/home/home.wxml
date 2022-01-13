@@ -1,0 +1,29 @@
+<l-loadmore show type="{{loadingType}}">
+  <view slot="content">
+    <image class="top-theme" src="{{themeA.entrance_img}}"></image>
+
+    <swiper class="swiper" autoplay circular indicator-dots>
+      <block wx:for="{{bannerA.items}}" wx:key="index">
+        <swiper-item>
+          <image class="swiper" src="{{item.img}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <category-grid grid="{{categoryGrid}}"></category-grid>
+
+    <image class="activity" src="{{activityA.entrance_img}}"></image>
+
+    <theme-spu-scroll theme="{{themeB}}" spuList="{{themeBSpuList}}"></theme-spu-scroll>
+
+    <image class="quality" src="{{themeC.entrance_img}}"></image>
+
+    <hot-list banner="{{bannerB}}"></hot-list>
+    <image src="{{themeD.entrance_img}}" class="fashion" />
+
+    <view class="spu-bottom">
+        <image class="title-spu-bottom" src="/imgs/home/title@interest.png" />
+        <l-water-flow generic:l-water-flow-item="spu-preview" />
+    </view>
+  </view>
+</l-loadmore>

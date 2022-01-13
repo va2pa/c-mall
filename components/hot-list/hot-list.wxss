@@ -1,0 +1,35 @@
+@import "../../wxss/app.wxss";
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50rpx;
+    background-color: #fff;
+}
+.title{
+    height: 90rpx;
+    width: 690rpx;
+}
+.inner-container{
+    margin-top: 30rpx;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+.left{
+    display: flex;
+    width: 346rpx;
+    height: 522rpx;
+}
+
+.right-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.right-img{
+    width: 400rpx;
+    height: 260rpx;
+    display: flex;
+}
