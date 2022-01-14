@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/water/water"
-
+    "pages/water/water",
+    "pages/detail/detail"
   ],
   "usingComponents": {
     "l-grid": "/miniprogram_npm/lin-ui/grid/index",
