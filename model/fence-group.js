@@ -3,10 +3,19 @@ import {Matrix} from './matrix'
 class FenceGroup{
   spu;
   skuList = [];
-
+  fences = [];
+  
   constructor(spu){
     this.spu = spu;
     this.skuList = spu.sku_list;
+  }
+
+  eachCell(callback){
+    for(let i = 0;i < this.fences.length; i++){
+      for(let j = 0;j < this.fences[i].cells.length; j++){
+        callback(this.fences[i].cells[j], i ,j);
+      }
+    }
   }
 
   initFences(){
@@ -15,10 +24,10 @@ class FenceGroup{
     matrix.transpose().forEach(row => {
       //由于row已完成转置，可以直接传入构造函数，封装性好
       const fence = new Fence(row);
-      fence.initValues();
+      fence.init();
       fences.push(fence);
     });
-    console.log(fences);
+    this.fences = fences;
   }
 
   _createMatrix(skuList){
@@ -36,7 +45,7 @@ class FenceGroup{
   //   const matrix = this._createMatrix(this.skuList);
   //   let curJ = -1;
   //   const fences = [];
-  //   matrix.forEach((e, i, j)=>{
+  //   matrix.each((e, i, j)=>{
   //     if(curJ != j){
   //       fences[j] = new Fence();
   //       curJ = j;

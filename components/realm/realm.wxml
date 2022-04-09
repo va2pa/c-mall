@@ -1,2 +1,11 @@
-<!--components/realm/realm.wxml-->
-<text>components/realm/realm.wxml</text>
+<view class="container">
+  <view>
+    <image></image>
+  </view>
+  <block wx:for="{{fences}}" wx:key="{{index}}">
+    <fence bind:celltap="onCellTap" x="{{index}}" fence="{{item}}"></fence>
+  </block>
+  <view class="counter-container">
+    
+  </view>
+</view>

@@ -12,13 +12,6 @@ class Matrix{
     return this.m[0].length
   }
 
-  forEach(callback){
-    for(let j = 0; j < this.cols; j++){
-      for(let i = 0; i < this.rows; i++){
-        callback(this.m[i][j], i, j);
-      }
-    }
-  }
 
   transpose(){
     const distArr = [];
@@ -32,6 +25,14 @@ class Matrix{
     }
     return distArr;
   }
+
+  // each(callback){
+  //   for(let j = 0; j < this.cols; j++){
+  //     for(let i = 0; i < this.rows; i++){
+  //       callback(this.m[i][j], i, j);
+  //     }
+  //   }
+  // }
 }
 
 export{
