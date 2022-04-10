@@ -45,12 +45,19 @@ Component({
     initSpu(){
       const spu = this.properties.spu;
       this.setData({
-        previewImg: spu.img
+        title: spu.title,
+        price: spu.price,
+        previewImg: spu.img,
+        discountPrice: spu.discount_price
       });
     },
     initSku(sku){
       this.setData({
-        previewImg: sku.img
+        title: sku.title,
+        price: sku.price,
+        previewImg: sku.img,
+        discountPrice: sku.discount_price,
+        stock: sku.stock
       });
     },
     initData(fenceGroup){
