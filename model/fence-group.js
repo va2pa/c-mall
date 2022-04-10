@@ -10,6 +10,14 @@ class FenceGroup{
     this.skuList = spu.sku_list;
   }
 
+  getDefaultSku(){
+    const defaultSkuId = this.spu.default_sku_id;
+    if(!defaultSkuId){
+      return;
+    }
+    return this.skuList.find(s => s.id == defaultSkuId);
+  }
+
   eachCell(callback){
     for(let i = 0;i < this.fences.length; i++){
       for(let j = 0;j < this.fences[i].cells.length; j++){

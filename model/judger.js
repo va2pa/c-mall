@@ -9,36 +9,47 @@ class Judger{
 
   constructor(fenceGroup){
     this.fenceGroup = fenceGroup;
+    this._initPathDict();
     this._initSkuPending();
   }
 
   _initSkuPending(){
     this.skuPending = new SkuPending();
+    const defaultSku = this.fenceGroup.getDefaultSku();
+    if(!defaultSku){
+      return;
+    }
+    this.skuPending.initDefaultSku(defaultSku);
+    this.judge(null, null, null, true);
   }
 
-  initPathDict(){
+  _initPathDict(){
     this.fenceGroup.skuList.forEach(s => {
       const skuCode = new SkuCode(s.code);
       this.pathDict = this.pathDict.concat(skuCode.segments);
     });
   }
 
-  judge(cell, x, y){
-    this._changeCurrentCellStatus(cell, x, y);
-    this.fenceGroup.eachCell((cell, x, y) => {
-      this._changeOtherCellStatus(cell, x, y);
-    });
+  judge(cell, x, y, isInit=false){
+    if(!isInit){
+      this._changeCurrentCellStatus(cell, x, y);
+    }
+    this._changeOtherCellStatus();
   }
-  _changeOtherCellStatus(cell, x, y){
-    const path = this._findPath(cell, x, y);
-    if(this.skuPending.isLatestSelectedInLine(cell, x)){
-      return;
-    }
-    if(this._isInDict(path)){
-      this.fenceGroup.fences[x].cells[y].status = cellStatus.WAITING;
-    }else{
-      this.fenceGroup.fences[x].cells[y].status = cellStatus.FORBIDDEN;
-    }
+  _changeOtherCellStatus(){
+    this.fenceGroup.eachCell((cell, x, y) => {
+      const path = this._findPath(cell, x, y);
+      if(this.skuPending.isLatestSelectedInLine(cell, x)){
+        // 为了初始化默认规格，手动选择时该赋值是冗余操作
+        cell.status = cellStatus.SELECTED;
+        return;
+      }
+      if(this._isInDict(path)){
+        cell.status = cellStatus.WAITING;
+      }else{
+        cell.status = cellStatus.FORBIDDEN;
+      }
+    });
   }
   _isInDict(path){
     return this.pathDict.includes(path);

@@ -20,8 +20,13 @@ Component({
       const fenceGroup = new FenceGroup(spu);
       fenceGroup.initFences();
       const judger = new Judger(fenceGroup);
-      judger.initPathDict();
       this.data.judger = judger;
+      const defaultSku = fenceGroup.getDefaultSku();
+      if(defaultSku){
+        this.initSku(defaultSku);
+      }else{
+        this.initSpu();
+      }
       this.initData(fenceGroup);
     }
   },
@@ -37,6 +42,17 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    initSpu(){
+      const spu = this.properties.spu;
+      this.setData({
+        previewImg: spu.img
+      });
+    },
+    initSku(sku){
+      this.setData({
+        previewImg: sku.img
+      });
+    },
     initData(fenceGroup){
       this.setData({
         fences: fenceGroup.fences
