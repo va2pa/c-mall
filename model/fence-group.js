@@ -10,6 +10,16 @@ class FenceGroup{
     this.skuList = spu.sku_list;
   }
 
+  getSkuByCode(code){
+    code = this.spu.id + '$' + code;
+    for(let i = 0;i < this.skuList.length;i++){
+      const sku = this.skuList[i];
+      if(sku.code === code){
+        return sku;
+      }
+    }
+  }
+  
   getDefaultSku(){
     const defaultSkuId = this.spu.default_sku_id;
     if(!defaultSkuId){

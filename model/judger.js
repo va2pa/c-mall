@@ -1,6 +1,6 @@
 import { cellStatus } from '../core/enum';
 import {SkuCode} from './sku-code'
-import { SkuPending } from './skuPending';
+import { SkuPending } from './sku-pending';
 import {StringBuilder} from '../utils/stringBuilder'
 class Judger{
   fenceGroup;
@@ -13,8 +13,23 @@ class Judger{
     this._initSkuPending();
   }
 
+  getCheckedSpecValues(){
+    return this.skuPending.getCheckedSpecValues();
+  }
+
+  getMissingSpecKeys(){
+    const keysIndex = this.skuPending.getMissingSpecKeysIndex();
+    return keysIndex.map(i => {
+      return this.fenceGroup.fences[i].key;
+    });
+  }
+  getIntactSku(){
+    const skuCode = this.skuPending.getSkuCode();
+    return this.fenceGroup.getSkuByCode(skuCode);
+  }
+
   _initSkuPending(){
-    this.skuPending = new SkuPending();
+    this.skuPending = new SkuPending(this.fenceGroup.fences.length);
     const defaultSku = this.fenceGroup.getDefaultSku();
     if(!defaultSku){
       return;

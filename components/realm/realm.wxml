@@ -11,7 +11,7 @@
               color="#157656"
               value="{{p.mainPrice(price,discountPrice)}}"
               value-size="28"></l-price>
-          <l-price wx:if="{{p.slashedPrice(price,discount_price)}}"
+          <l-price wx:if="{{p.slashedPrice(price,discountPrice)}}"
               deleted
               color="#999999"
               value="{{p.slashedPrice(price,discountPrice)}}"
@@ -22,8 +22,11 @@
               <view wx:if="{{stock && stock < 10 && stock > 0}}"class="stock-pinch">仅剩：{{stock}}件</view>
         </view>
 
-        <view class="sku-pending">
-          <text>请选择：</text>
+        <view wx:if="{{!noSpec}}" class="sku-pending">
+          <text wx:if="{{!isSkuIntact}}">请选择：</text>
+          <text wx:if="{{isSkuIntact}}">已选择：</text>
+          <text wx:if="{{!isSkuIntact}}">{{missingKeys}}</text>
+          <text wx:if="{{isSkuIntact}}">{{checkedValues}}</text>
         </view>
       </view>
     </view>
