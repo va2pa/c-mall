@@ -43,9 +43,20 @@ class FenceGroup{
       //由于row已完成转置，可以直接传入构造函数，封装性好
       const fence = new Fence(row);
       fence.init();
+      if(this._hasSketchSpec() && this._isSketchFence(fence.keyId)){
+        fence.setSketchImg(this.skuList);
+      }
       fences.push(fence);
     });
     this.fences = fences;
+  }
+
+  _hasSketchSpec(){
+    return this.spu.sketch_spec_id ? true : false;
+  }
+
+  _isSketchFence(fenceId){
+    return this.spu.sketch_spec_id === fenceId;
   }
 
   _createMatrix(skuList){

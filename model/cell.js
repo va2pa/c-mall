@@ -5,6 +5,8 @@ class Cell{
   id;
   status = cellStatus.WAITING;
   spec;
+  img;
+  
   constructor(spec){
     this.spec = spec;
     this.title = spec.value;

@@ -16,10 +16,23 @@ class Fence{
     this.key = specs[0].key;
     this.keyId = specs[0].key_id;
   }
+
+  setSketchImg(skuList){
+    this.cells.forEach(cell => {
+      const matchSku = skuList.find(sku => {
+        return sku.code.includes(cell.getCellCode());
+      });
+      if(matchSku){
+        cell.img = matchSku.img;
+      }
+    });
+  }
+
   init(){
     this._initCells();
   }
   _initCells(){
+    // 避免添加重复的spec_value
     this.specs.forEach(spec => {
       const existed = this.cells.some(c => {
         return c.id === spec.value_id;

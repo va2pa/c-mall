@@ -1,5 +1,6 @@
 <view bind:tap="onTap" class="container {{c.statusStyle(cell.status).outer}}">
   <view class="inner-container {{c.statusStyle(cell.status).inner}}">
+    <image class="img" src="{{cell.img}}" wx:if="{{cell.img}}" mode="aspectFit"></image>
     <text>{{cell.title}}</text>
   </view>
 </view>
