@@ -4,7 +4,7 @@ class Activity{
   static activityName = 'a-2';
   static async getHomeLocation4(){
     return await Http.request({
-      url: `/activity/name/${Activity.activityName}`
+      url: `activity/name/${Activity.activityName}`
     })
   }
 }

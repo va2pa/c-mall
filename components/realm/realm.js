@@ -10,7 +10,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    spu: Object
+    spu: Object,
+    shoppingWay: String
   },
 
   observers:{
@@ -97,8 +98,6 @@ Component({
       });
     },
     setStockStatus(stock){
-      console.log(stock);
-      console.log(this.data.currentCount);
       this.setData({
         outStock : stock < this.data.currentCount
       });

@@ -1,1 +1,12 @@
-<realm spu="{{spu}}"></realm>
+<l-popup show="{{showRealm}}" content-align="bottom">
+  <realm spu="{{spu}}" shoppingWay="{{shoppingWay}}"></realm>
+</l-popup>
+
+<tabbar
+  class="tabbar"
+  cart-item-count="{{cartItemCount}}"
+  bind:gotohome="onGotoHome"
+  bind:gotocart="onGotoCart"
+  bind:addtocart="onAddToCart"
+  bind:buy="onBuy">
+  </tabbar>

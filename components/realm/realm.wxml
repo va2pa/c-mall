@@ -1,5 +1,5 @@
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
-<view class="container">
+<scroll-view scroll-y class="container">
   <view class="sku-preview">
     <image src="{{previewImg}}" class="sku-img"></image>
     <view class="sku-description">
@@ -31,9 +31,6 @@
       </view>
     </view>
   </view>
-  <view>
-    
-  </view>
   <block wx:for="{{fences}}" wx:key="{{index}}">
     <fence bind:celltap="onCellTap" x="{{index}}" fence="{{item}}"></fence>
   </block>
@@ -41,9 +38,10 @@
     <text>购买数量</text>
     <counter bind:lintap="onCounter"></counter>
   </view>
-</view>
+</scroll-view>
 <view wx:if="{{!outStock}}" class="bottom-btn">
-  <text>加入购物车</text>
+  <text wx:if="{{shoppingWay === 'cart'}}">加入购物车</text>
+  <text wx:else>立即购买</text>
 </view>
 <view wx:else class="bottom-btn out-stock">
   <text>暂时缺货</text>

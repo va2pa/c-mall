@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "realm": "/components/realm/realm"
+    "realm": "/components/realm/realm",
+    "tabbar": "/components/tab-bar/tab-bar"
   }
 }

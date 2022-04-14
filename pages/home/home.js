@@ -52,8 +52,9 @@ Page({
     let themeBSpuList = [];
     if(themeB.online){
       const themeBwithSpu = await Theme.getThemeWithSpu(Theme.getHomeLocation5Name());
+      console.log(themeBwithSpu);
       if(themeBwithSpu){
-        themeBSpuList = themeBwithSpu.spu_list.slice(0,6);
+        themeBSpuList = themeBwithSpu.spus.slice(0,6);
       }
     }
     const themeC = themeObj.getHomeLocation6();
