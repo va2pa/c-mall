@@ -1,3 +1,4 @@
+import { Cart } from "../../model/cart";
 import { Cell } from "../../model/cell";
 import { FenceGroup } from "../../model/fence-group";
 import { Judger } from "../../model/judger";
@@ -32,7 +33,10 @@ Component({
   data: {
     judger: Object,
     fences: Array,
-    fenceGroup: Object
+    fenceGroup: Object,
+    stock: Number,
+    currentCount: Cart.SKU_MIN_COUNT,
+    outStock: Number
   },
 
   /**
@@ -44,6 +48,7 @@ Component({
         noSpec: true
       })
       this.bindSku(spu.sku_list[0]);
+      this.setStockStatus(spu.sku_list[0].stock);
     },
     processHasSpec(spu){
       const fenceGroup = new FenceGroup(spu);
@@ -53,6 +58,7 @@ Component({
       const defaultSku = fenceGroup.getDefaultSku();
       if(defaultSku){
         this.bindSku(defaultSku);
+        this.setStockStatus(defaultSku.stock);
       }else{
         this.bindSpu();
       }
@@ -90,6 +96,19 @@ Component({
         fences: fenceGroup.fences
       });
     },
+    setStockStatus(stock){
+      console.log(stock);
+      console.log(this.data.currentCount);
+      this.setData({
+        outStock : stock < this.data.currentCount
+      });
+    },
+    onCounter(event){
+      this.data.currentCount = event.detail.count;
+      if(this.data.isSkuIntact){
+        this.setStockStatus(this.data.stock);
+      }
+    },
     onCellTap(event){
       let cell = event.detail.cell;
       const x = event.detail.x;
@@ -104,6 +123,7 @@ Component({
       if(this.data.isSkuIntact){
         const sku = judger.getIntactSku();
         this.bindSku(sku);
+        this.setStockStatus(sku.stock);
       }
     }
   }

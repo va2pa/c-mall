@@ -38,6 +38,13 @@
     <fence bind:celltap="onCellTap" x="{{index}}" fence="{{item}}"></fence>
   </block>
   <view class="counter-container">
-    
+    <text>购买数量</text>
+    <counter bind:lintap="onCounter"></counter>
   </view>
+</view>
+<view wx:if="{{!outStock}}" class="bottom-btn">
+  <text>加入购物车</text>
+</view>
+<view wx:else class="bottom-btn out-stock">
+  <text>暂时缺货</text>
 </view>
