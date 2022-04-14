@@ -1,5 +1,6 @@
 import { ShoppingWay } from '../../core/enum';
 import {Spu} from '../../model/spu'
+import { SpuExplain } from '../../model/spu-explain';
 Page({
 
   /**
@@ -18,9 +19,10 @@ Page({
   onLoad: async function (options) {
     const pid = options.pid;
     const spu = await Spu.getDetail(pid);
-    // console.log(spu);
+    const explain = await SpuExplain.getExplain();
     this.setData({
-      spu
+      spu,
+      explain
     });
   },
 
@@ -30,6 +32,14 @@ Page({
   onReady: function () {
 
   },
+
+  onSpecChange(event){
+    console.log(event.detail);
+    this.setData({
+      spec: event.detail
+    });
+  },
+
   onGotoHome(event) {
     wx.switchTab({
         url: '/pages/home/home',

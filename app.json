@@ -18,6 +18,7 @@
     "l-icon": "/miniprogram_npm/lin-ui/icon/index",
     "l-badge": "/miniprogram_npm/lin-ui/badge/index",
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
+    "l-tag": "/miniprogram_npm/lin-ui/tag/index",
     "spu-preview": "/components/spu-preview/spu-preview",
     "counter": "/components/counter/counter"
   },

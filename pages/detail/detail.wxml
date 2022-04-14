@@ -1,5 +1,28 @@
+<view>
+  <swiper class="top" autoplay indicator-dots>
+    <block wx:for="{{spu.spu_img_list}}">
+      <swiper-item>
+        <image class="top" mode="aspectFill" src="{{item.img}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <spu-description spu="{{spu}}"></spu-description>
+  <view bind:tap="onAddToCart" wx:if="{{!spec.noSpec}}" class="sku-pending">
+    <view class="specs">
+      <text wx:if="{{!spec.isSkuIntact}}">请选择：</text>
+      <text wx:if="{{spec.isSkuIntact}}">已选择：</text>
+      <text wx:if="{{!spec.isSkuIntact}}">{{spec.missingKeys}}</text>
+      <text wx:if="{{spec.isSkuIntact}}">{{spec.checkedValues}}</text>
+    </view>
+    <l-icon name="right" color="#187790" size="24" />
+  </view>
+  <view class="explain">
+    <spu-explain texts="{{explain}}"></spu-explain>
+  </view>
+</view>
+
 <l-popup show="{{showRealm}}" content-align="bottom">
-  <realm spu="{{spu}}" shoppingWay="{{shoppingWay}}"></realm>
+  <realm bind:specChange="onSpecChange" spu="{{spu}}" shoppingWay="{{shoppingWay}}"></realm>
 </l-popup>
 
 <tabbar

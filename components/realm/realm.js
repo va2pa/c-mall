@@ -19,12 +19,13 @@ Component({
       if(!spu){
         return;
       }
-      //处理无规格
       if(Spu.noSpec(spu)) {
+        //处理无规格
         this.processNoSpec(spu);
-        return;
+      }else{
+        this.processHasSpec(spu);
       }
-      this.processHasSpec(spu);
+      this.triggerSpecEvent();
     }
   },
 
@@ -108,6 +109,22 @@ Component({
         this.setStockStatus(this.data.stock);
       }
     },
+    triggerSpecEvent(){
+      const noSpec = Spu.noSpec(this.properties.spu);
+      if(noSpec){
+        this.triggerEvent('specChange',{
+          noSpec: noSpec,
+        });
+      }else{
+        this.triggerEvent('specChange',{
+          noSpec: noSpec,
+          isSkuIntact: this.data.judger.skuPending.isSkuIntact(),
+          checkedValues: this.data.judger.getCheckedSpecValues(),
+          missingKeys: this.data.judger.getMissingSpecKeys()
+        });
+      }
+      
+    },
     onCellTap(event){
       let cell = event.detail.cell;
       const x = event.detail.x;
@@ -124,6 +141,7 @@ Component({
         this.bindSku(sku);
         this.setStockStatus(sku.stock);
       }
+      this.triggerSpecEvent();
     }
   }
 })
