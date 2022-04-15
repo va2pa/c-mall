@@ -1,6 +1,7 @@
 import { ShoppingWay } from '../../core/enum';
 import {Spu} from '../../model/spu'
 import { SpuExplain } from '../../model/spu-explain';
+import { getWindowHeightRpx } from "../../utils/system";
 Page({
 
   /**
@@ -20,9 +21,13 @@ Page({
     const pid = options.pid;
     const spu = await Spu.getDetail(pid);
     const explain = await SpuExplain.getExplain();
+
+    const windowHeightRpx = await getWindowHeightRpx();
+    const swiperH = windowHeightRpx - 60 - 20 - 2
     this.setData({
       spu,
-      explain
+      explain,
+      swiperH
     });
   },
 

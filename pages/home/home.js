@@ -2,7 +2,7 @@ import {Theme} from '../../model/theme';
 import {Banner} from '../../model/banner'
 import {Category} from '../../model/category'
 import {Activity} from '../../model/activity'
-import {SpuPaging, SupPaging} from '../../model/spu-paging'
+import {SpuPaging} from '../../model/spu-paging'
 // pages/home/home.js
 Page({
   /**
@@ -32,8 +32,9 @@ Page({
 
   async initBottomSpuList(){
     this.data.spuPaging = SpuPaging.getLatestPaging();
+    console.log('===============');
+    console.log(this.data.spuPaging)
     const data = await this.data.spuPaging.applyMoreData();
-    console.log(data)
     if(!data){
       return;
     }

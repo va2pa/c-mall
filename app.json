@@ -5,7 +5,9 @@
     "pages/detail/detail",
     "pages/cart/cart",
     "pages/my/my",
-    "pages/category/category"
+    "pages/category/category",
+    "pages/search/search",
+    "pages/spu-list/spu-list"
   ],
   "usingComponents": {
     "l-grid": "/miniprogram_npm/lin-ui/grid/index",
@@ -18,7 +20,9 @@
     "l-icon": "/miniprogram_npm/lin-ui/icon/index",
     "l-badge": "/miniprogram_npm/lin-ui/badge/index",
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
-    "l-tag": "/miniprogram_npm/lin-ui/tag/index",
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-segment": "/miniprogram_npm/lin-ui/segment/index",
+    "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
     "spu-preview": "/components/spu-preview/spu-preview",
     "counter": "/components/counter/counter"
   },
@@ -34,32 +38,32 @@
     "color": "#333333",
     "selectedColor": "#333333",
     "list": [
-        {
-            "text": "首页",
-            "pagePath": "pages/home/home",
-            "iconPath": "imgs/tabbar/home@dis.png",
-            "selectedIconPath": "imgs/tabbar/home.png"
-        },
-        {
-            "pagePath": "pages/category/category",
-            "text": "分类",
-            "iconPath": "imgs/tabbar/category@dis.png",
-            "selectedIconPath": "imgs/tabbar/category.png"
-        },
-        {
-            "pagePath": "pages/cart/cart",
-            "text": "购物车",
-            "iconPath": "imgs/tabbar/cart@dis.png",
-            "selectedIconPath": "imgs/tabbar/cart.png"
-        },
-        {
-            "pagePath": "pages/my/my",
-            "text": "我的",
-            "iconPath": "imgs/tabbar/my@dis.png",
-            "selectedIconPath": "imgs/tabbar/my.png"
-        }
+      {
+        "text": "首页",
+        "pagePath": "pages/home/home",
+        "iconPath": "imgs/tabbar/home@dis.png",
+        "selectedIconPath": "imgs/tabbar/home.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "imgs/tabbar/category@dis.png",
+        "selectedIconPath": "imgs/tabbar/category.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "imgs/tabbar/cart@dis.png",
+        "selectedIconPath": "imgs/tabbar/cart.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "imgs/tabbar/my@dis.png",
+        "selectedIconPath": "imgs/tabbar/my.png"
+      }
     ]
-},
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

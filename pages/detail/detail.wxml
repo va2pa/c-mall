@@ -1,4 +1,4 @@
-<view>
+<scroll-view scroll-y style="height: {{swiperH}}rpx;">
   <swiper class="top" autoplay indicator-dots>
     <block wx:for="{{spu.spu_img_list}}">
       <swiper-item>
@@ -19,7 +19,12 @@
   <view class="explain">
     <spu-explain texts="{{explain}}"></spu-explain>
   </view>
-</view>
+  <view class="detail-img-container">
+    <block wx:for="{{spu.spu_detail_img_list}}" wx:key="index">
+      <image class="detail-img" mode="widthFix" src="{{item.img}}" />
+    </block>
+  </view>
+</scroll-view>
 
 <l-popup show="{{showRealm}}" content-align="bottom">
   <realm bind:specChange="onSpecChange" spu="{{spu}}" shoppingWay="{{shoppingWay}}"></realm>
