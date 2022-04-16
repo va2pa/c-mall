@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "spu-preview-h": "/components/spu-preview-h/spu-preview-h"
+  }
 }

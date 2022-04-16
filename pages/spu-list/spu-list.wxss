@@ -1,9 +1,15 @@
-.container{
-  margin-top: 20rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20rpx;
-  padding-top: 30rpx;
-  background-color: #fff;
+.spu-bottom{
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: 18rpx;
+  padding-left:18rpx;
+  padding-right:18rpx;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.tip-container{
+  padding-top: 300rpx;
+  padding-left:250rpx;
 }

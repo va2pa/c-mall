@@ -1,3 +1,12 @@
 <view class="container">
-    <l-water-flow generic:l-water-flow-item="spu-preview" />
+    <l-loadmore show type="{{loadingType}}">
+      <view slot="content" class="spu-bottom">
+        <block wx:for="{{items}}">
+          <spu-preview-h data="{{item}}"></spu-preview-h>
+        </block>
+        <view class="tip-container" wx:if="{{tip}}">
+          <text>{{tip}}</text>
+        </view>
+      </view>
+    </l-loadmore>
 </view>

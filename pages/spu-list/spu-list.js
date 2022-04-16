@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    spuPaging: Object
+    spuPaging: Object,
+    tip: ''
   },
 
   /**
@@ -20,12 +21,23 @@ Page({
   async initBottomSpuList(cid){
     this.data.spuPaging = SpuPaging.getByCategory(cid);
     const data = await this.data.spuPaging.applyMoreData();
-    if(!data){
-      return;
+    if(data.accumulator.length !== 0){
+      this.bindItems(data)
+    }else{
+      this.setData({
+        tip: '该分类无商品'
+      });
     }
-    wx.lin.renderWaterFlow(data.items);
   },
 
+  bindItems(data) {
+    if (data.accumulator.length !== 0) {
+        this.setData({
+            items: data.accumulator,
+            tip: ''
+        })
+    }
+  },
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -34,7 +46,7 @@ Page({
     if(!data){
       return;
     }
-    wx.lin.renderWaterFlow(data.items);
+    this.bindItems(data);
     if(!data.moreData){
       this.setData({
         loadingType: 'end'

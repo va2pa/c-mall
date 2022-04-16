@@ -12,6 +12,12 @@ class SpuPaging{
       url: `spu/by/category/${cid}`
     }, 6);
   }
+
+  static search(keyword) {
+    return new Paging({
+        url: `spu/search?keyword=${keyword}`
+    })
+  }
 }
 
 export {

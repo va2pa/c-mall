@@ -35,6 +35,12 @@
           "pathName": "pages/category/category",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,2 +1,63 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="header">
+  <l-search-bar
+    bind:linconfirm="onSearch"
+    bind:lincancel="onCacel"
+    l-class="input"
+    maxlength="9"
+    placeholder="请输入名称"
+    bg-color="#f1f1f1"
+  ></l-search-bar>
+</view>
+
+<view class="container">
+  <view wx:if="{{!search}}">
+    <view wx:if="{{historyTags.length !== 0}}" class="history-container">
+      <view class="history-title">
+        <view class="slide"></view>
+        <text class>历史搜索</text>
+        <view style="flex:1"></view>
+        <view class="icon" bind:tap="onDeleteHistory">
+          <l-icon name="delete" color="#A9A9A9" size="32"></l-icon>
+        </view>
+      </view>
+      <view class="history-tags">
+        <block wx:for="{{historyTags}}" wx:key="index">
+          <l-tag bind:lintap="onSearch" l-class="tag" name="{{item}}">{{item}}</l-tag>
+        </block>
+      </view>
+    </view>
+    <view class="history-container">
+      <view class="history-title">
+        <view class="slide"></view>
+        <text class>热门搜索</text>
+        <view style="flex:1"></view>
+      </view>
+      <view class="history-tags">
+        <block wx:for="{{hotTags}}" wx:key="index">
+          <l-tag
+            bind:lintap="onSearch"
+            l-class="tag"
+            select="{{item.highlight}}"
+            name="{{item.title}}"
+            l-select-class="tag-selected"
+          >{{item.title}}</l-tag>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <l-loadmore show type="{{loadingType}}">
+      <view slot="content" hidden="{{!search}}" class="spu-bottom">
+        <block wx:for="{{items}}">
+          <spu-preview-h data="{{item}}"></spu-preview-h>
+        </block>
+        <view class="tip-container" wx:if="{{tip}}">
+          <text>{{tip}}</text>
+        </view>
+      </view>
+    </l-loadmore>
+      
+  </view>
+
+  <l-loading></l-loading>
+</view>
