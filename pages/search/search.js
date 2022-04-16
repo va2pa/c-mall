@@ -34,7 +34,10 @@ Page({
       })
       const keyword = event.detail.value || event.detail.name
       if (!keyword) {
-          showToast("请输入关键字！")
+          wx.showToast({
+            icon: 'none',
+            title: '请输入关键词',
+          })
           return
       }
       history.save(keyword)
