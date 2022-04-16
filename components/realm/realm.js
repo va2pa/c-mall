@@ -105,9 +105,16 @@ Component({
     },
     onCounter(event){
       this.data.currentCount = event.detail.count;
-      if(this.data.isSkuIntact){
-        this.setStockStatus(this.data.stock);
+      if(Spu.noSpec(this.properties.spu)){
+        // 处理无规格
+        this.setStockStatus(this.properties.spu.sku_list[0].stock);
+      }else{
+        // 处理有规格
+        if(this.data.isSkuIntact){
+          this.setStockStatus(this.data.stock);
+        }
       }
+      
     },
     triggerSpecEvent(){
       const noSpec = Spu.noSpec(this.properties.spu);
