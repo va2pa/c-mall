@@ -12,7 +12,7 @@ Page({
   data: {
     spuPaging: Object,
     items: [],
-    tip: ''
+    empty: false
   },
 
   /**
@@ -27,7 +27,6 @@ Page({
       })
   },
   async onSearch(event) {
-    console.log(this.data.tip);
       this.setData({
           search: true,
           items: []
@@ -58,7 +57,7 @@ Page({
         this.bindItems(data)
       }else{
         this.setData({
-          tip: '搜索结果为空'
+          empty: true
         });
       }
   },
@@ -67,7 +66,7 @@ Page({
       if (data.accumulator.length !== 0) {
           this.setData({
               items: data.accumulator,
-              tip: ''
+              empty: false
           })
       }
   },
@@ -76,7 +75,7 @@ Page({
       this.setData({
           search: false,
           items: [],
-          tip: ''
+          empty: false
       })
   },
 

@@ -7,7 +7,7 @@ Page({
    */
   data: {
     spuPaging: Object,
-    tip: ''
+    empty: false
   },
 
   /**
@@ -25,7 +25,7 @@ Page({
       this.bindItems(data)
     }else{
       this.setData({
-        tip: '该分类无商品'
+        empty: true
       });
     }
   },
@@ -34,7 +34,7 @@ Page({
     if (data.accumulator.length !== 0) {
         this.setData({
             items: data.accumulator,
-            tip: ''
+            empty: false
         })
     }
   },
