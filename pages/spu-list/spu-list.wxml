@@ -4,7 +4,7 @@
         <block wx:for="{{items}}">
           <spu-preview-h data="{{item}}"></spu-preview-h>
         </block>
-        <view class="tip-container" wx:if="{{empty}}">
+        <view wx:if="{{empty}}">
           <l-status-show show="{{true}}" type="product" describe="该分类下暂时没有商品~~"></l-status-show>
         </view>
       </view>

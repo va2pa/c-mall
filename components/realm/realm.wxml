@@ -39,7 +39,7 @@
     <counter bind:lintap="onCounter"></counter>
   </view>
 </scroll-view>
-<view wx:if="{{!outStock}}" class="bottom-btn">
+<view wx:if="{{!outStock}}" class="bottom-btn" bind:tap="onCartOrBuy">
   <text wx:if="{{shoppingWay === 'cart'}}">加入购物车</text>
   <text wx:else>立即购买</text>
 </view>

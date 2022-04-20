@@ -149,6 +149,37 @@ Component({
         this.setStockStatus(sku.stock);
       }
       this.triggerSpecEvent();
+    },
+    _triggerShoppingEvent(sku) {
+      this.triggerEvent('goShopping', {
+          shoppingWay: this.properties.shoppingWay,
+          spuId: this.properties.spu.id,
+          sku: sku,
+          skuCount: this.data.currentCount,
+      })
+    },
+    onCartOrBuy(event) {
+      if (Spu.noSpec(this.properties.spu)) {
+          this.shoppingNoSpec()
+      } else {
+          this.shoppingHasSpec()
+      }
+    },
+    shoppingNoSpec() {
+      this._triggerShoppingEvent(this.properties.spu.sku_list[0])
+    },
+    shoppingHasSpec() {
+      if (!this.data.isSkuIntact) {
+          const missSpecKeys = this.data.judger.getMissingSpecKeys()
+          wx.showToast({
+              icon: 'none',
+              title: `请选择：${missSpecKeys.join(',')}`,
+              duration: 2500,
+          })
+          return
+      }
+      this._triggerShoppingEvent(this.data.judger.getIntactSku())
     }
+
   }
 })

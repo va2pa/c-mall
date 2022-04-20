@@ -27,7 +27,7 @@
 </scroll-view>
 
 <l-popup show="{{showRealm}}" content-align="bottom">
-  <realm bind:specChange="onSpecChange" spu="{{spu}}" shoppingWay="{{shoppingWay}}"></realm>
+  <realm bind:specChange="onSpecChange" bind:goShopping="OnShopping" spu="{{spu}}" shoppingWay="{{shoppingWay}}"></realm>
 </l-popup>
 
 <tabbar

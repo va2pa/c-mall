@@ -9,7 +9,3 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.tip-container{
-  padding-top: 300rpx;
-  padding-left:250rpx;
-}

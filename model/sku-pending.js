@@ -23,7 +23,8 @@ class SkuPending{
 
   getMissingSpecKeysIndex(){
     const keysIndex = [];
-    for(let i = 0;i < this.pending.length;i++){
+    // 遍历this.size而不是this.pending.length
+    for(let i = 0;i < this.size;i++){
       if(!this.pending[i]){
         keysIndex.push(i);
       }
