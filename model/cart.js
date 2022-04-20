@@ -13,7 +13,7 @@ class Cart{
   }
 
   addItem(newItem) {
-    const cartData = this._getCartData()
+    const cartData = this.getCartData()
     const oldItem = this.findSameItem(newItem.skuId)
     if (!oldItem) {
         cartData.items.unshift(newItem)
@@ -24,7 +24,7 @@ class Cart{
   }
 
   removeItem(skuId) {
-    const cartData = this._getCartData()
+    const cartData = this.getCartData()
     const oldItemIndex = cartData.items.findIndex(item => {
         return item.skuId === skuId
     })
@@ -32,15 +32,32 @@ class Cart{
     this._refreshStorage()
   }
 
+  getCartData() {
+    return this._cartData;
+  }
+
+  getCartItemCount(){
+    return this.getCartData().items.length;
+  }
+
+  isEmpty() {
+    return this.getCartData().items.length === 0;
+  }
+
+  static isOnline(item) {
+    return item.sku.online;
+  }
+
+  static isSoldOut(item) {
+    return item.sku.stock <= 0;
+  }
+
+
   _findEqualItemIndex(skuId) {
-      const cartData = this._getCartData()
+      const cartData = this.getCartData()
       return cartData.items.findIndex(item => {
           return item.skuId === skuId
       })
-  }
-  
-  _getCartData() {
-      return this._cartData;
   }
 
   _getLocalCart() {
@@ -49,7 +66,7 @@ class Cart{
   }
 
   findSameItem(skuId) {
-    const items = this._getCartData().items;
+    const items = this.getCartData().items;
     for (let i = 0; i < items.length; i++) {
         if (items[i].skuId === skuId) {
             return items[i];

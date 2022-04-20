@@ -1,4 +1,3 @@
-
 class CartItem {
   skuId = null
   sku = null

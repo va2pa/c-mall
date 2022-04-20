@@ -1,10 +1,17 @@
+import { Cart } from "./model/cart"
+
 // app.js
 App({
   onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    const cart = new Cart()
+    if (!cart.isEmpty()) {
+      wx.showTabBarRedDot({
+        index: 2,
+      })
+    }
+
+    // const token = new Token()
+    // token.verify()
 
     // 登录
     wx.login({

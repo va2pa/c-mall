@@ -1,4 +1,6 @@
 import { ShoppingWay } from '../../core/enum';
+import { Cart } from '../../model/cart';
+import { CartItem } from '../../model/cart-item';
 import {Spu} from '../../model/spu'
 import { SpuExplain } from '../../model/spu-explain';
 import { getWindowHeightRpx } from "../../utils/system";
@@ -9,7 +11,7 @@ Page({
    */
   data: {
     spu: null,
-    cartItemCount:99,
+    cartItemCount:0,
     showRealm: false,
     shoppingWay: ShoppingWay.CART
   },
@@ -29,6 +31,7 @@ Page({
       explain,
       swiperH
     });
+    this.updateCartItemCount();
   },
 
   /**
@@ -69,20 +72,28 @@ Page({
     });
   },
   OnShopping(event) {
-    const chooseSku = event.detail.sku
+    console.log(event.detail);
+    const sku = event.detail.sku
     const skuCount = event.detail.skuCount
-    if (event.detail.orderWay === ShoppingWay.CART) {
+    if (event.detail.shoppingWay === ShoppingWay.CART) {
         const cart = new Cart()
-        const cartItem = new CartItem(chooseSku, skuCount)
-        cart.addItem(cartItem)
-
-        this.updateCartItemCount()
+        const cartItem = new CartItem(sku, skuCount)
+        console.log(cartItem);
+        cart.addItem(cartItem);
+        this.updateCartItemCount();
     }
-    if (event.detail.orderWay === ShoppingWay.BUY) {
-        wx.navigateTo({
-            url: `/pages/order/order?sku_id=${chooseSku.id}&count=${skuCount}&way=${ShoppingWay.BUY}`,
-        });
-    }
-},
+    // if (event.detail.orderWay === ShoppingWay.BUY) {
+    //     wx.navigateTo({
+    //         url: `/pages/order/order?sku_id=${chooseSku.id}&count=${skuCount}&way=${ShoppingWay.BUY}`,
+    //     });
+    // }
+  },
+  updateCartItemCount() {
+    const cart = new Cart()
+    this.setData({
+        cartItemCount: cart.getCartItemCount(),
+        showRealm: false
+    })
+  },
   
 })

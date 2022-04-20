@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "counter": "../counter/counter",
+    "checkbox": "../checkbox/checkbox"
+  }
+}

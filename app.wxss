@@ -2,13 +2,10 @@ page {
   background-color: #f5f5f5;
 }
 @font-face {
-  font-family: 'c-mall';  /* project id 3328374 */
-  src: url('');
-  src: url('?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_3328374_knf05y1u5pt.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_3328374_knf05y1u5pt.woff') format('woff'),
-  url('//at.alicdn.com/t/font_3328374_knf05y1u5pt.ttf') format('truetype'),
-  url('#c-mall') format('svg');
+  font-family: 'c-mall';  /* Project id 3328374 */
+  src: url('//at.alicdn.com/t/font_3328374_n9h0l6r2c9p.woff2?t=1650441294011') format('woff2'),
+       url('//at.alicdn.com/t/font_3328374_n9h0l6r2c9p.woff?t=1650441294011') format('woff'),
+       url('//at.alicdn.com/t/font_3328374_n9h0l6r2c9p.ttf?t=1650441294011') format('truetype');
 }
 
 .mall{
@@ -17,4 +14,8 @@ page {
 
 .l-icon-home:before{
   content: "\e62e";
+}
+
+.l-icon-check:before{
+  content: "\e60b";
 }
