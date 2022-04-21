@@ -1,17 +1,15 @@
 class Caculator {
-    totalPrice = 0
-    cartItems = []
+    totalPrice = 0;
+    totalSkuCount = 0;
+    cartItems = [];
 
     constructor(cartItems) {
-        this.cartItems = cartItems
-    }
-    getTotalPrice() {
-        return this.totalPrice
+        this.cartItems = cartItems;
     }
 
     calc() {
         this.cartItems.forEach(cartItem => {
-            this.push(cartItem)
+            this.push(cartItem);
         });
     }
 
@@ -23,7 +21,8 @@ class Caculator {
             partTotalPrice = Caculator.accMultiply(cartItem.count, cartItem.sku.price)
 
         }
-        this.totalPrice = Caculator.accAdd(this.totalPrice, partTotalPrice)
+        this.totalSkuCount = Caculator.accAdd(cartItem.count, this.totalSkuCount);
+        this.totalPrice = Caculator.accAdd(this.totalPrice,partTotalPrice)
     }
     static accAdd(num1, num2) {
       const num1Digits = (num1.toString().split('.')[1] || '').length;

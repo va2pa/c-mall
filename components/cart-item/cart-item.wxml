@@ -7,10 +7,10 @@
       <view class="sku-container">
         <view class="image-container">
           <view wx:if="{{!online}}" class="image-sold-out">
-            <text>下 架</text>
+            <text>已 下 架</text>
           </view>
           <view wx:elif="{{soldOut}}" class="image-sold-out">
-            <text>售 罄</text>
+            <text>已 售 罄</text>
           </view>
           <image mode="aspectFit" class="left" src="{{cartItem.sku.img}}" />
         </view>

@@ -7,7 +7,8 @@
     "pages/my/my",
     "pages/category/category",
     "pages/search/search",
-    "pages/spu-list/spu-list"
+    "pages/spu-list/spu-list",
+    "pages/order/order"
   ],
   "usingComponents": {
     "l-grid": "/miniprogram_npm/lin-ui/grid/index",

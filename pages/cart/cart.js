@@ -1,3 +1,4 @@
+import { ShoppingWay } from "../../core/enum";
 import { Cart } from "../../model/cart"
 import { Caculator } from "../../utils/caculator";
 
@@ -11,7 +12,8 @@ Page({
   data: {
     empty: false,
     allChecked: false,
-    totalPrice: Number
+    totalPrice: Number,
+    totalSkuCount: Number
   },
 
   /**
@@ -24,13 +26,6 @@ Page({
           cartItems: cartData.items
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
@@ -74,12 +69,14 @@ Page({
   },
 
   calcuateCart() {
-    const checkedItems = cart.getCheckedItems()
-    const calcuator = new Caculator(checkedItems)
+    const checkedItems = cart.getCheckedItems();
+    const calcuator = new Caculator(checkedItems);
     calcuator.calc()
-    const totalPrice = calcuator.getTotalPrice()
+    const totalSkuCount = calcuator.totalSkuCount;
+    const totalPrice = calcuator.totalPrice;
     this.setData({
-        totalPrice
+      totalSkuCount,
+      totalPrice
     })
   },
   onCounter(){
@@ -106,5 +103,13 @@ Page({
     wx.switchTab({
       url: '/pages/home/home',
     })
+  },
+  onSettleBtn(event) {
+    console.log(this.data.totalSkuCount);
+    if (this.data.totalSkuCount > 0) {
+      wx.navigateTo({
+        url: `/pages/order/order?way=${ShoppingWay.CART}`,
+      });
+    }
   }
 })

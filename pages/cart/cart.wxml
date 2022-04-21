@@ -17,7 +17,7 @@
       <l-price value="{{totalPrice}}" color="#157658" count-size="32" unit-size="32"></l-price>
     </view>
   </view>
-  <view bind:tap="onSettle" class="settlement-btn {{totalSkuCount===0?'disabled':''}}">
+  <view bind:tap="onSettleBtn" class="settlement-btn {{totalSkuCount===0?'disabled':''}}">
     <text>结算</text>
   </view>
 </view>
