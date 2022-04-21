@@ -97,6 +97,24 @@ class Cart{
     return cartData.items.map((sku) => sku.skuId)
   }
 
+  getCheckedSkuIds() {
+    const cartData = this.getCartData();
+    const skuIds = [];
+    if (cartData.items.length === 0) {
+        return skuIds;
+    }
+    cartData.items.forEach(item => {
+        if (item.checked) {
+            skuIds.push(item.sku.id);
+        }
+    });
+    return skuIds;
+  }
+  getCountBySkuId(skuId) {
+    const cartData = this.getCartData();
+    const item = cartData.items.find(item => item.skuId === skuId);
+    return item.count;
+  }
   async getSkuByServer() {
     const cartData = this.getCartData()
     if (cartData.items.length === 0) {

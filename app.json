@@ -29,6 +29,7 @@
     "l-status-show": "/miniprogram_npm/lin-ui/status-show/index",
     "l-slide-view": "/miniprogram_npm/lin-ui/slide-view/index",
     "spu-preview": "/components/spu-preview/spu-preview",
+    "order-item": "/components/order-item/order-item",
     "counter": "/components/counter/counter"
   },
   "window": {
