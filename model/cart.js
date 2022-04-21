@@ -44,6 +44,49 @@ class Cart{
     return this.getCartData().items.length === 0;
   }
 
+  checkchange(skuId) {
+    const item = this.findSameItem(skuId);
+    item.checked = !item.checked;
+    this._refreshStorage();
+  }
+
+  isAllChecked() {
+    let cartItems = this.getCartData().items;
+    for (const item of cartItems) {
+        if (!item.checked) {
+            return false;
+        }
+    }
+    return true;
+  }
+
+  checkAll(checked) {
+    let items = this.getCartData().items;
+    items.forEach(item => {
+        item.checked = checked;
+    });
+    this._refreshStorage();
+  }
+
+  getCheckedItems() {
+    const checkedItems = [];
+    this.getCartData().items.forEach(item => {
+        if (item.checked) {
+          checkedItems.push(item);
+        }
+    });
+    return checkedItems;
+  }
+
+  updateItemCount(skuId, newCount) {
+    const item = this.findSameItem(skuId);
+    if (newCount >= Cart.SKU_MAX_COUNT) {
+      newCount = Cart.SKU_MAX_COUNT;
+    }
+    item.count = newCount;
+    this._refreshStorage();
+  }
+  
   static isOnline(item) {
     return item.sku.online;
   }
@@ -51,7 +94,6 @@ class Cart{
   static isSoldOut(item) {
     return item.sku.stock <= 0;
   }
-
 
   _findEqualItemIndex(skuId) {
       const cartData = this.getCartData()

@@ -2,7 +2,7 @@
 <l-slide-view wx:if="{{cartItem}}" height="220" width="750" slide-width="200">
   <view slot="left" class="container">
       <view class="checkbox">
-        <checkbox checked="{{cartItem.checked}}"></checkbox>
+        <checkbox bind:check="checkedItem" checked="{{cartItem.checked}}"></checkbox>
       </view>
       <view class="sku-container">
         <view class="image-container">
@@ -34,7 +34,7 @@
             <counter
               bind:linout="onOutNumber"
               max="{{stock}}"
-              bind:lintap="onSelectCount"
+              bind:lintap="onCounter"
               count="{{skuCount}}"
             ></counter>
           </view>
@@ -43,7 +43,7 @@
         <view wx:if="{{soldOut || !online}}" class="sold-out"></view>
       </view>
   </view>
-  <view slot="right" bind:tap="deleteCartItem" class="slide">
+  <view slot="right" bind:tap="onDelete" class="slide">
     <text>删除</text>
   </view>
 </l-slide-view>

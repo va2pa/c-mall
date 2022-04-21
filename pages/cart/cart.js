@@ -1,5 +1,7 @@
 import { Cart } from "../../model/cart"
+import { Caculator } from "../../utils/caculator";
 
+const cart = new Cart();
 // pages/cart/cart.js
 Page({
 
@@ -7,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    empty: false
+    empty: false,
+    allChecked: false,
+    totalPrice: Number
   },
 
   /**
@@ -28,7 +32,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const cart = new Cart();
     const cartItems = cart.getCartData().items
     if (cart.isEmpty()) {
         this.processEmpty()
@@ -38,8 +41,45 @@ Page({
     this.setData({
         cartItems
     })
+    this.isAllChecked();
   },
 
+  isAllChecked(){
+    this.setData({
+        allChecked: cart.isAllChecked()
+    })
+    this.calcuateCart();
+  },
+
+  onDeleteItem(event) {
+    this.isAllChecked();
+  },
+
+  onCheck(event) {
+    this.isAllChecked();
+  },
+
+  onCheckAll(event) {
+    const checked = event.detail.checked
+    cart.checkAll(checked)
+    this.setData({
+        cartItems: this.data.cartItems
+    })
+    this.calcuateCart();
+  },
+
+  calcuateCart() {
+    const checkedItems = cart.getCheckedItems()
+    const calcuator = new Caculator(checkedItems)
+    calcuator.calc()
+    const totalPrice = calcuator.getTotalPrice()
+    this.setData({
+        totalPrice
+    })
+  },
+  onCounter(){
+    this.calcuateCart();
+  },
   processEmpty(){
     this.setData({
       empty: true

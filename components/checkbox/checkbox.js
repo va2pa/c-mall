@@ -17,8 +17,9 @@ Component({
    */
   methods: {
       onCheck(event) {
+          const checked = !this.properties.checked;
           this.setData({
-              checked: !this.properties.checked
+              checked
           })
           this.triggerEvent('check', {
               checked
