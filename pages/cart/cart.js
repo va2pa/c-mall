@@ -17,8 +17,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  async onLoad(options) {
+    const cartData = await cart.getSkuByServer();
+    if (cartData) {
+      this.setData({
+          cartItems: cartData.items
+      })
+    }
   },
 
   /**

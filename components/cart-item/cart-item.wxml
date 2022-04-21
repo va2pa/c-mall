@@ -15,7 +15,7 @@
           <image mode="aspectFit" class="left" src="{{cartItem.sku.img}}" />
         </view>
 
-        <view class="right {{soldOut?'disabled':''}}">
+        <view class="right {{soldOut || !online?'disabled':''}}">
           <view class="description-container">
             <view class="title-container">
               <text class="title">{{cartItem.sku.title}}</text>

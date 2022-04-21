@@ -1,3 +1,5 @@
+import { Sku } from "./sku"
+
 class Cart{
   static SKU_MIN_COUNT = 1
   static SKU_MAX_COUNT = 9999
@@ -86,7 +88,43 @@ class Cart{
     item.count = newCount;
     this._refreshStorage();
   }
-  
+
+  getSkuByIds() {
+    const cartData = this.getCartData()
+    if (cartData.items.length === 0) {
+        return []
+    }
+    return cartData.items.map((sku) => sku.skuId)
+  }
+
+  async getSkuByServer() {
+    const cartData = this.getCartData()
+    if (cartData.items.length === 0) {
+        return null
+    }
+    const skuIds = this.getSkuByIds()
+    const serverData = await Sku.getSkuByIds(skuIds)
+    this._refreshDataByServer(serverData)
+    this._refreshStorage()
+    return this.getCartData()
+  }
+  _refreshDataByServer(serverData) {
+    const cartData = this.getCartData()
+    cartData.items.forEach(item => {
+      let find = false;
+      for (const sku of serverData) {
+          if (item.skuId=== sku.id) {
+            item.sku = sku
+            find = true
+            break
+          }
+      }
+      if (!find) {
+        item.sku.online = false
+      }
+    });
+  }
+
   static isOnline(item) {
     return item.sku.online;
   }
