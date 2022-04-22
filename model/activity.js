@@ -7,6 +7,12 @@ class Activity{
       url: `activity/name/${Activity.activityName}`
     })
   }
+
+  static async getActivityWithCoupon(activityName) {
+    return await Http.request({
+        url: `activity/name/${activityName}/with_coupon`
+    })
+  }
 }
 
 export{

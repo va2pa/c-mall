@@ -32,13 +32,10 @@ Page({
 
   async initBottomSpuList(){
     this.data.spuPaging = SpuPaging.getLatestPaging();
-    console.log('===============');
-    console.log(this.data.spuPaging)
     const data = await this.data.spuPaging.applyMoreData();
     if(!data){
       return;
     }
-    console.log(data.items)
     wx.lin.renderWaterFlow(data.items);
   },
 
@@ -53,7 +50,6 @@ Page({
     let themeBSpuList = [];
     if(themeB.online){
       const themeBwithSpu = await Theme.getThemeWithSpu(Theme.getHomeLocation5Name());
-      console.log(themeBwithSpu);
       if(themeBwithSpu){
         themeBSpuList = themeBwithSpu.spus.slice(0,6);
       }
@@ -61,7 +57,6 @@ Page({
     const themeC = themeObj.getHomeLocation6();
     const bannerB = await Banner.getHomeLocation7();
     const themeD = themeObj.getHomeLocation8();
-    console.log(bannerB);
     this.setData({
       themeA,
       bannerA,
@@ -98,11 +93,10 @@ Page({
       });
     }
   },
+  onCoupons(event) {
+    wx.navigateTo({
+        url: `/pages/coupon/coupon?name=${Activity.activityName}`
+    });
+  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

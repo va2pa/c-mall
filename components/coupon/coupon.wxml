@@ -1,0 +1,61 @@
+<view class="container">
+  <content-title name="Collapse" describe="折叠面板">
+    <content-card name="高级案例">
+      <view class="ticket-container">
+        <view class="ticket-container-top">
+          <view class="ticket-left">
+            <view class="name">{{_coupon.title}}</view>
+            <view class="date">有效期：{{_coupon.startTime}} - {{_coupon.endTime}}</view>
+          </view>
+          <view wx:if="{{_coupon.type === 2}}" class="ticket-right">
+            <view class="number">
+              {{_coupon.rate * 10}}
+            </view>
+            <view class="text">折</view>
+          </view>
+          <view wx:else class="ticket-right">
+            <l-price
+            size="60"
+            value="{{_coupon.minus}}"
+            ></l-price>
+          </view>
+          
+        </view>
+        <view class="ticket-container-bottom">
+          <l-collapse>
+            <l-collapse-item l-body-class="l-body-class" l-title-class="l-title-class" customTitle="{{true}}">
+              <!--自定义标题-->
+              <view class="title" slot="title">
+                <view class="ticket-detail-container">使用规则
+                  <l-icon name="down" size="16" color="#999"/>
+                </view>
+                <l-button data-id="{{_coupon.id}}" bind:lintap="onGetCoupon" l-class height="50" size="mini" shape="semicircle" plain="{{true}}">
+                <view wx:if="{{_status === 0}}">
+                  点击领取
+                </view>
+                <view wx:else>
+                  立即使用
+                </view>
+                
+                </l-button>
+              </view>
+              <text>1、请注意本优惠卷的使用时限，领取后请在有效期内使用\n2、本优惠券不与其他优惠劵同享</text>
+            </l-collapse-item>
+          </l-collapse>
+        </view>
+      </view>
+    </content-card>
+  </content-title>
+  <l-toast
+    show="{{firstCollect}}"
+    icon="success"
+    title="领取成功！\n请到'我的优惠劵'查看"
+  />
+  <l-toast
+    duration="2000"
+    show="{{repeatCollect}}"
+    icon="error"
+    title="您已领取过该优惠劵"
+  />
+</view>
+

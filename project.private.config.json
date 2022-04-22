@@ -53,6 +53,12 @@
           "pathName": "pages/order/order",
           "query": "way=cart",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/coupon/coupon",
+          "query": "name=a-2",
+          "scene": null
         }
       ]
     }

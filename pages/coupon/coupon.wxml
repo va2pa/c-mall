@@ -1,0 +1,5 @@
+<view class="container">
+  <block wx:for="{{couponList}}" wx:key="index">
+    <coupon coupon="{{item}}" status="0"></coupon>
+  </block>
+</view>

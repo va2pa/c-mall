@@ -8,7 +8,8 @@
     "pages/category/category",
     "pages/search/search",
     "pages/spu-list/spu-list",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/coupon/coupon"
   ],
   "usingComponents": {
     "l-grid": "/miniprogram_npm/lin-ui/grid/index",
@@ -28,8 +29,12 @@
     "l-loading": "/miniprogram_npm/lin-ui/loading/index",
     "l-status-show": "/miniprogram_npm/lin-ui/status-show/index",
     "l-slide-view": "/miniprogram_npm/lin-ui/slide-view/index",
+    "l-collapse-item": "/miniprogram_npm/lin-ui/collapse-item/index",
+    "l-collapse": "/miniprogram_npm/lin-ui/collapse/index",
+    "l-toast": "/miniprogram_npm/lin-ui/toast/index",
     "spu-preview": "/components/spu-preview/spu-preview",
     "order-item": "/components/order-item/order-item",
+    "coupon": "/components/coupon/coupon",
     "counter": "/components/counter/counter"
   },
   "window": {

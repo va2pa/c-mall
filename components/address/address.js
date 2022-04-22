@@ -26,7 +26,6 @@ Component({
         let res;
         try {
             res = await wx.chooseAddress({});
-            console.log(res);
         } catch (error) {
           
         }

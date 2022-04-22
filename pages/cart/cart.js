@@ -105,7 +105,6 @@ Page({
     })
   },
   onSettleBtn(event) {
-    console.log(this.data.totalSkuCount);
     if (this.data.totalSkuCount > 0) {
       wx.navigateTo({
         url: `/pages/order/order?way=${ShoppingWay.CART}`,

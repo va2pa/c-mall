@@ -12,7 +12,7 @@
 
     <category-grid grid="{{categoryGrid}}"></category-grid>
 
-    <image class="activity" src="{{activityA.entrance_img}}"></image>
+    <image bind:tap="onCoupons" class="activity" src="{{activityA.entrance_img}}"></image>
 
     <theme-spu-scroll theme="{{themeB}}" spuList="{{themeBSpuList}}"></theme-spu-scroll>
 
