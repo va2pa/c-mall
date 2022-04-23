@@ -115,6 +115,17 @@ class Cart{
     const item = cartData.items.find(item => item.skuId === skuId);
     return item.count;
   }
+
+  removeCheckedItems() {
+    const cartData = this.getCartData()
+    for (let i = 0;i < cartData.items.length;i++) {
+        if (cartData.items[i].checked) {
+            cartData.items.splice(i, 1)
+        }
+    }
+    this._refreshStorage();
+  }
+
   async getSkuByServer() {
     const cartData = this.getCartData()
     if (cartData.items.length === 0) {

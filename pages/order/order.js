@@ -13,12 +13,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    shoppingWay: 'buy',
     selectedCouponId: null,
     discountMoney: 0,
     showCouponList: false,
     address: null,
     submitDisable: false,
-    addressEmpty: false
+    addressEmpty: false,
+    totalPrice: 0,
+    finalTotalPrice: 0
   },
 
   /**
@@ -28,8 +31,8 @@ Page({
     let orderItems
     let itemCount
 
-    const shoppingWay = options.way
-    this.data.shoppingWay = shoppingWay
+    this.data.shoppingWay = options.way
+    console.log(this.data.shoppingWay);
 
     // if (shoppingWay === ShoppingWay.BUY) {
     //     const skuId = options.sku_id
@@ -55,8 +58,8 @@ Page({
         })
   },
   async getCartOrderItems(skuIds) {
-    const skuList = await Sku.getSkuByIds(skuIds);
-    const orderItems = skuList.map((sku) => {
+    const serverSkuList = await Sku.getSkuByIds(skuIds);
+    const orderItems = serverSkuList.map((sku) => {
       const count = cart.getCountBySkuId(sku.id)
       return new OrderItem(sku, count)
     })
@@ -76,6 +79,7 @@ Page({
     });
   },
   async onSubmit(event) {
+
     if (!this.data.address) {
         this.setData({
           addressEmpty: true
@@ -83,13 +87,49 @@ Page({
         return
     }
     this.disableSubmitBtn()
-    const orderPost = new OrderPost(
-        this.data.totalPrice,
-        this.data.finalTotalPrice,
-        this.data.currentCouponId,
-        this.data.order.getOrderSkuInfoList(),
-        this.data.address
-    )
+    const orderId = await this.placeOrder({
+      total_price: this.data.totalPrice,
+      final_total_price: this.data.finalTotalPrice,
+      coupon_id: this.data.selectedCouponId,
+      sku_info_list: this.data.order.getOrderSkuInfoList(),
+      address: this.packageAddress(this.data.address)
+    });
+    if (!orderId) {
+        // 下单失败，可调整后重新点击下单
+        this.enableSubmitBtn();
+        return
+    }
+    if (this.data.shoppingWay === ShoppingWay.CART) {
+      cart.removeCheckedItems();
+    }
+    
+
+  },
+  async placeOrder(orderPost) {
+    try {
+        const orderData = await Order.placeOrder(orderPost)
+        if (orderData) {
+            return orderData.id
+        }
+    } catch (e) {
+        console.log(e);
+        this.setData({
+            orderFail: true,
+            orderFailMsg: e.message
+        })
+    }
+  },
+  packageAddress(address){
+    return {
+      user_name: address.userName,
+      mobile: address.telNumber,
+      national_code: address.nationalCode,
+      city: address.cityName,
+      province: address.provinceName,
+      postal_code: address.postalCode,
+      county: address.countyName,
+      detail: address.detailInfo,
+    }
   },
   disableSubmitBtn() {
     this.setData({

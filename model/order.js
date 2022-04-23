@@ -14,8 +14,7 @@ class Order {
     return await Http.request({
         url: 'order/place',
         method: 'POST',
-        data: orderPost,
-        throwError: true
+        data: orderPost
     })
   }
 
@@ -48,6 +47,15 @@ class Order {
         return true
     }
     return false
+  }
+
+  getOrderSkuInfoList() {
+    return this.orderItems.map(item => {
+        return {
+            id: item.sku.id,
+            count: item.count
+        }
+    })
   }
 }
 
