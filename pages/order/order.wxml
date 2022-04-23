@@ -1,9 +1,53 @@
 <view class="container">
-  <address></address>
+  <address bind:chooseAddress="onChooseAddress"></address>
 
   <view class="order-item-container">
     <block wx:for="{{orderItems}}" wx:key="{{item.sku.id}}">
       <order-item l-class="order-item" order-item="{{item}}"></order-item>
     </block>
   </view>
+
+  <view bind:tap="onShowCoupon" wx:if="{{true}}" class="coupon-btn">
+    <view>
+      优惠劵
+    </view>
+    <l-icon name="right" color="#187790" size="24" />
+  </view>
+  <l-popup show="{{showCouponList}}" content-align="bottom">
+    <coupon-selector bind:choose="onChooseCoupon" coupons="{{coupons}}"></coupon-selector>
+  </l-popup>
+
+  <view class="temp-price-container">
+    <view class="origin-price-container">
+      <text>商品金额：</text>
+      <l-price value="{{totalPrice}}" size="24" color="#333"></l-price>
+    </view>
+    <view class="discount-price-container">
+      <text>优惠金额：</text>
+      <view class="discount-price">
+        <text class="minus-tag discount-color">-</text>
+        <l-price value="{{discountMoney}}" size="24" color="#F55670"></l-price>
+      </view>
+    </view>
+  </view>
 </view>
+<view class="bottom">
+  <view class="price-container">
+    <text>合计:</text>
+    <l-price value="{{finalTotalPrice}}" color="#F55670" size="30"></l-price>
+  </view>
+  <l-button
+    disabled="{{submitDisable}}"
+    bind:lintap="onSubmit"
+    l-class="submit"
+    
+    height="88"
+    width="200"
+  >提交订单</l-button>
+</view>
+
+<l-toast
+    duration="2000"
+    show="{{addressEmpty}}"
+    icon="error"
+    title="请选择收获地址"/>

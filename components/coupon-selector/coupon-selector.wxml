@@ -1,0 +1,26 @@
+<wxs src="../../wxs/radio.wxs" module="r"></wxs>
+
+<view class="container">
+    <view class="header">
+        <text>可用优惠券({{satisfyCount}})</text>
+    </view>
+    <view wx:if="{{_coupons.length!==0}}" class="main">
+        <l-radio-group  bind:linchange="onChange">
+            <block wx:for="{{_coupons}}" wx:key="{{item.id}}">
+                <l-radio disabled="{{!item.satisfy}}"
+                         class="radio"
+                         key="{{item.id}}">
+                    <view class="radio-inner {{currentKey==item.id?'checked':''}} {{!item.satisfy?'disabled':''}}">
+                        <text>{{item.title}}</text>
+                        <view class="date {{currentKey==item.id?'checked':''}}">
+                            <text>{{item.startTime}}</text>
+                            <text>-</text>
+                            <text>{{item.endTime}}</text>
+                        </view>
+                    </view>
+                </l-radio>
+            </block>
+        </l-radio-group>
+    </view>
+</view>
+

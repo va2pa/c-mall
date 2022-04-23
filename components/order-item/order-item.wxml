@@ -9,9 +9,9 @@
         </view>
     </view>
     <view class="right">
-        <l-price value="{{orderItem.sku.finalPrice || orderItem.sku.final_price}}"
+        <l-price value="{{orderItem.singleFinalPrice}}"
                  color="#333333">
         </l-price>
-        <text>x {{orderItem.sku.count}}</text>
+        <text>x {{orderItem.count}}</text>
     </view>
 </view>

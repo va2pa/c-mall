@@ -23,17 +23,16 @@ Component({
       this.getUserAddress()
     },
     async getUserAddress() {
-        let res;
-        try {
-            res = await wx.chooseAddress({});
-        } catch (error) {
-          
-        }
-        if (res) {
+        const addressInfo = await wx.chooseAddress({});
+        console.log(addressInfo);
+        if (addressInfo) {
             this.setData({
-                address: res,
+                address: addressInfo,
                 hasChosen: true
             })
+            this.triggerEvent('chooseAddress', {
+              address: addressInfo
+          })
         }
       }
   }

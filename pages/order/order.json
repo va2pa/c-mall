@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "address": "/components/address/address",
-    "order-item": "/components/order-item/order-item"
+    "order-item": "/components/order-item/order-item",
+    "coupon-selector": "/components/coupon-selector/coupon-selector"
   }
 }

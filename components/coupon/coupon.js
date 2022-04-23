@@ -39,7 +39,6 @@ Component({
             if (this.data._status === CouponStatus.AVAILABLE) {
                 wx.switchTab({
                     url: '/pages/category/category',
-
                 });
                 return
             }

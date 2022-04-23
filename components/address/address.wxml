@@ -8,13 +8,13 @@
     shape="square"
     icon="address"
     icon-size="36"
-    icon-color="#157658"
+   
   >选择地址</l-button>
 
   <view bind:tap="onChooseAddress" wx:if="{{hasChosen}}" class="address-container">
     <view class="address-inner">
       <view class="base-info">
-        <l-icon name="address" size="36" color="#157658" l-class="sleeve"></l-icon>
+        <l-icon name="address" size="36" ></l-icon>
         <text class="name">{{address.userName}}</text>
         <text>{{address.telNumber}}</text>
       </view>
@@ -25,7 +25,7 @@
         <text>{{address.detailInfo}}</text>
       </view>
     </view>
-    <l-icon style="font-weight: bold" name="right" color="#157658" size="30"></l-icon>
+    <l-icon style="font-weight: bold" name="right" size="30"></l-icon>
   </view>
 
 </view>

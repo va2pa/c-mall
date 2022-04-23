@@ -19,12 +19,9 @@ Component({
   observers: {
     'orderItem': function (orderItem) {
       console.log(orderItem)
-      const specValues = orderItem.spec_values
       this.setData({
-        // specValuesText:specValues?parseSpecValueArray(specValues):parseSpecValue(orderItem.specs)
-        specValuesText: parseSpecs(orderItem.specs)
+        specValuesText: parseSpecs(orderItem.sku.specs)
       })
-      console.log(parseSpecs(orderItem.specs));
     }
   },
 
