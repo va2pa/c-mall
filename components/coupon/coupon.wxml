@@ -24,7 +24,6 @@
         <view class="ticket-container-bottom">
           <l-collapse>
             <l-collapse-item l-body-class="l-body-class" l-title-class="l-title-class" customTitle="{{true}}">
-              <!--自定义标题-->
               <view class="title" slot="title">
                 <view class="ticket-detail-container">使用规则
                   <l-icon name="down" size="16" color="#999"/>
@@ -39,7 +38,7 @@
                 
                 </l-button>
               </view>
-              <text>1、请注意本优惠卷的使用时限，领取后请在有效期内使用\n2、本优惠券不与其他优惠劵同享</text>
+              <text space="ensp">1、{{_coupon.remark}}\n2、本优惠券不与其他优惠劵同享                           </text>
             </l-collapse-item>
           </l-collapse>
         </view>
