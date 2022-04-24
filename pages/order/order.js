@@ -30,23 +30,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    let orderItems;
-    let itemCount;
     this.data.shoppingWay = options.way;
     console.log(this.data.shoppingWay);
+    let orderItems;
+    let orderItemCount;
+    if (this.data.shoppingWay === ShoppingWay.BUY) {
+        const skuId = options.sku_id;
+        const count = options.count;
+        orderItems = await this.getSingleOrderItems(skuId, count);
+        console.log(orderItems);
+        orderItemCount = 1
+    } else {
+        const skuIds = cart.getCheckedSkuIds();
+        orderItems = await this.getCartOrderItems(skuIds);
+        orderItemCount = skuIds.length;
+    }
 
-    // if (shoppingWay === ShoppingWay.BUY) {
-    //     const skuId = options.sku_id
-    //     const count = options.count
-    //     orderItems = await this.getSingleOrderItems(skuId, count)
-    //     localItemCount = 1
-    // } else {
-        const skuIds = cart.getCheckedSkuIds()
-        orderItems = await this.getCartOrderItems(skuIds)
-        itemCount = skuIds.length
-    // }
-
-    const order = new Order(orderItems, itemCount);
+    const order = new Order(orderItems, orderItemCount);
     this.data.order = order;
     const totalPrice = order.getTotalPrice();
     const availableCoupons = await Coupon.getAvailableWithCategory();
@@ -58,11 +58,17 @@ Page({
             finalTotalPrice: totalPrice
         })
   },
+
+  async getSingleOrderItems(skuId, count) {
+    const serverSkuList = await Sku.getSkuByIds(skuId);
+    console.log(serverSkuList);
+    return [new OrderItem(serverSkuList[0], count)];
+  },
   async getCartOrderItems(skuIds) {
     const serverSkuList = await Sku.getSkuByIds(skuIds);
     const orderItems = serverSkuList.map((sku) => {
-      const count = cart.getCountBySkuId(sku.id)
-      return new OrderItem(sku, count)
+      const count = cart.getCountBySkuId(sku.id);
+      return new OrderItem(sku, count);
     })
     return orderItems;
   },

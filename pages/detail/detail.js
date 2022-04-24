@@ -73,8 +73,13 @@ Page({
   },
   OnShopping(event) {
     console.log(event.detail);
-    const sku = event.detail.sku
-    const skuCount = event.detail.skuCount
+    const sku = event.detail.sku;
+    const skuCount = event.detail.skuCount;
+    if (event.detail.shoppingWay === ShoppingWay.BUY) {
+      wx.navigateTo({
+          url: `/pages/order/order?sku_id=${sku.id}&count=${skuCount}&way=${ShoppingWay.BUY}`,
+      });
+    }
     if (event.detail.shoppingWay === ShoppingWay.CART) {
         const cart = new Cart()
         const cartItem = new CartItem(sku, skuCount)
@@ -82,11 +87,7 @@ Page({
         cart.addItem(cartItem);
         this.updateCartItemCount();
     }
-    // if (event.detail.orderWay === ShoppingWay.BUY) {
-    //     wx.navigateTo({
-    //         url: `/pages/order/order?sku_id=${chooseSku.id}&count=${skuCount}&way=${ShoppingWay.BUY}`,
-    //     });
-    // }
+
   },
   updateCartItemCount() {
     const cart = new Cart()
