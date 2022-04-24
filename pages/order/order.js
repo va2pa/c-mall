@@ -105,18 +105,28 @@ Page({
       cart.removeCheckedItems();
     }
     // 订单生成成功，接下来处理支付
-    wx.lin.showLoading({
-      type: "flash",
-      fullScreen: true
-    });
     // 显示模拟支付弹窗
     this.setData({
       showFakePay: true
     });
-
   },
+
+  onConfirmPay(){
+    console.log(this.data.orderId);
+    Order.fakePayOrder(this.data.orderId);
+    wx.redirectTo({
+      url: `/pages/pay-success/pay-success?oid=${this.data.orderId}`,
+    });
+  },
+
+  onCancelPay(){
+    wx.redirectTo({
+      url: `/pages/my-order/my-order?status=${1}`,
+    });
+  },
+
   async placeOrder(orderPost) {
-    const orderData = await Order.placeOrder(orderPost)
+    const orderData = await Order.placeOrder(orderPost);
     if (orderData) {
         return orderData.id
     }
@@ -166,18 +176,6 @@ Page({
             discountMoney: 0
         })
     }
-  },
-  onConfirmPay(){
-    console.log(this.data.orderId);
-    wx.redirectTo({
-      url: `/pages/pay-success/pay-success?oid=${this.data.orderId}`,
-    });
-  },
-
-  onCancelPay(){
-    wx.redirectTo({
-      url: `/pages/my-order/my-order?status=${1}`,
-    });
   },
   
 })

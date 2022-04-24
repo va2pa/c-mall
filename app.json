@@ -11,7 +11,8 @@
     "pages/order/order",
     "pages/coupon/coupon",
     "pages/pay-success/pay-success",
-    "pages/my-order/my-order"
+    "pages/my-order/my-order",
+    "pages/order-detail/order-detail"
   ],
   "usingComponents": {
     "l-grid": "/miniprogram_npm/lin-ui/grid/index",

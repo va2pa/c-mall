@@ -59,6 +59,12 @@
           "pathName": "pages/coupon/coupon",
           "query": "name=a-2",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/pay-success/pay-success",
+          "query": "oid=393",
+          "scene": null
         }
       ]
     }
