@@ -15,7 +15,6 @@ Page({
    */
   async onLoad(options) {
     const activityName = options.name
-
     const activity = await Activity.getActivityWithCoupon(activityName)
     const couponList = activity.coupons
     console.log(couponList);

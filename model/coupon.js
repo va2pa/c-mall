@@ -34,6 +34,12 @@ class Coupon{
     })
   }
 
+  static async geMyCouponsByStatus(status) {
+    return await Http.request({
+        url: `coupon/myself/by/status/${status}`
+    })
+  }
+
   static getFinalTotalPrice(orderPirce, couponData) {
     console.log(couponData.type);
     if(couponData.type === CouponType.FULL_MINUS){

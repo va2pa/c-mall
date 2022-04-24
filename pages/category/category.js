@@ -36,6 +36,7 @@ Page({
     return defaultRoot ? defaultRoot : roots[0];
   },
   onSegChange(event) {
+    // *1 将String类型转Number类型
     const rootId = event.detail.activeKey * 1
     console.log(rootId);
     const categories = this.data.categories

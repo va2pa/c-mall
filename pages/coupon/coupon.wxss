@@ -1,4 +1,7 @@
 /* pages/coupon/coupon.wxss */
+page{
+  background-color: #fff;
+}
 .container {
   padding-top: 26rpx;
   display: flex;

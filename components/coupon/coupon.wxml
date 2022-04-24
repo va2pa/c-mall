@@ -32,7 +32,7 @@
                 <view wx:if="{{_status === 0}}">
                   点击领取
                 </view>
-                <view wx:else>
+                <view wx:if="{{_status === 1}}">
                   立即使用
                 </view>
                 

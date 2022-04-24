@@ -71,6 +71,12 @@
           "pathName": "pages/my/my",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/my-coupon/my-coupon",
+          "query": "",
+          "scene": null
         }
       ]
     }

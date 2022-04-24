@@ -1,1 +1,10 @@
 /* pages/my-coupon/my-coupon.wxss */
+page{
+  background-color: #fff;
+}
+.container {
+  padding-top: 26rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
