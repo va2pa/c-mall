@@ -1,1 +1,35 @@
-/* pages/my/my.wxss */
+page{
+  background-color: #fff;
+}
+
+.main-container{
+    background-color: #ffffff;
+    padding-top: 30rpx;
+    padding-bottom: 10rpx;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.list{
+    margin-top: 30rpx;
+    box-sizing: border-box;
+    width: 670rpx;
+}
+
+.no-line{
+    border-bottom: 0 !important;
+}
+
+.list-item{
+    color: #333333;
+    font-size:28rpx !important;
+}
+
+.right-desc{
+    color:#c0c6c9 !important;
+    font-size: 24rpx !important;
+}
+
+
+
