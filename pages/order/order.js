@@ -21,17 +21,18 @@ Page({
     submitDisable: false,
     addressEmpty: false,
     totalPrice: 0,
-    finalTotalPrice: 0
+    finalTotalPrice: 0,
+    showFakePay: false,
+    orderId: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    let orderItems
-    let itemCount
-
-    this.data.shoppingWay = options.way
+    let orderItems;
+    let itemCount;
+    this.data.shoppingWay = options.way;
     console.log(this.data.shoppingWay);
 
     // if (shoppingWay === ShoppingWay.BUY) {
@@ -99,24 +100,25 @@ Page({
         this.enableSubmitBtn();
         return
     }
+    this.data.orderId = orderId;
     if (this.data.shoppingWay === ShoppingWay.CART) {
       cart.removeCheckedItems();
     }
-    
+    // 订单生成成功，接下来处理支付
+    wx.lin.showLoading({
+      type: "flash",
+      fullScreen: true
+    });
+    // 显示模拟支付弹窗
+    this.setData({
+      showFakePay: true
+    });
 
   },
   async placeOrder(orderPost) {
-    try {
-        const orderData = await Order.placeOrder(orderPost)
-        if (orderData) {
-            return orderData.id
-        }
-    } catch (e) {
-        console.log(e);
-        this.setData({
-            orderFail: true,
-            orderFailMsg: e.message
-        })
+    const orderData = await Order.placeOrder(orderPost)
+    if (orderData) {
+        return orderData.id
     }
   },
   packageAddress(address){
@@ -165,7 +167,17 @@ Page({
         })
     }
   },
+  onConfirmPay(){
+    console.log(this.data.orderId);
+    wx.redirectTo({
+      url: `/pages/pay-success/pay-success?oid=${this.data.orderId}`,
+    });
+  },
+
+  onCancelPay(){
+    wx.redirectTo({
+      url: `/pages/my-order/my-order?status=${1}`,
+    });
+  },
   
-
-
 })

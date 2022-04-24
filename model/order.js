@@ -18,6 +18,13 @@ class Order {
     })
   }
 
+  static async fakePayOrder(orderId) {
+    return await Http.request({
+        url: `order/fakepay/${orderId}`,
+        method: 'POST'
+    })
+  }
+
   getTotalPrice() {
     return this.orderItems.reduce((pre, item) => {
         const sum = Caculator.accAdd(pre, item.finalPrice)

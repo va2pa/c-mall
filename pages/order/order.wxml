@@ -47,7 +47,21 @@
 </view>
 
 <l-toast
-    duration="2000"
-    show="{{addressEmpty}}"
-    icon="error"
-    title="请选择收获地址"/>
+  duration="2000"
+  show="{{addressEmpty}}"
+  icon="error"
+  title="请选择收获地址"/>
+
+<l-loading></l-loading>
+
+<l-dialog 
+  bind:linconfirm="onConfirmPay"
+  bind:lincancel="onCancelPay"
+  show="{{showFakePay}}"
+  type="confirm"  
+  title=""
+  content="下单成功！确定支付吗？"
+  confirm-text="支付"
+  confirm-color="#f60"
+  cancel-text="我在想想"
+  cancel-color="#999" />
