@@ -10,18 +10,21 @@ class Cart{
         return Cart.instance
     }
     Cart.instance = this
-    this._cartData = this._getLocalCart()
     return this
   }
 
   addItem(newItem) {
+
     const cartData = this.getCartData()
+    console.log(cartData);
     const oldItem = this.findSameItem(newItem.skuId)
     if (!oldItem) {
         cartData.items.unshift(newItem)
     } else {
         this._combineItems(oldItem, newItem.count)
     }
+    console.log(cartData);
+
     this._refreshStorage()
   }
 
@@ -35,6 +38,11 @@ class Cart{
   }
 
   getCartData() {
+    if(this._cartData != null){
+      return this._cartData;
+    }
+    this._cartData = this._getLocalCart();
+    this._refreshStorage();
     return this._cartData;
   }
 
@@ -120,7 +128,9 @@ class Cart{
     const cartData = this.getCartData()
     for (let i = 0;i < cartData.items.length;i++) {
         if (cartData.items[i].checked) {
-            cartData.items.splice(i, 1)
+          cartData.items.splice(i, 1);
+          // 删除后数组长度-1，因此index也需要-1
+          i--;
         }
     }
     this._refreshStorage();

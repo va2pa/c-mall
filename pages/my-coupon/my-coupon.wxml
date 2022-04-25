@@ -1,13 +1,13 @@
 <!--pages/my-coupon/my-coupon.wxml-->
-<l-segment bind:linchange="changeTabs">
+<l-segment bind:linchange="changeTabs" l-class="seg">
         <l-segment-item tab="可使用" key="1" />
         <l-segment-item tab="已使用" key="2" />
         <l-segment-item tab="已过期" key="3" />
 </l-segment>
 <view class="container">
   <block wx:for="{{currentCoupons}}" wx:key="index">
-    <coupon coupon="{{item}}" status="0"></coupon>
+    <coupon coupon="{{item}}" status="{{status}}"></coupon>
   </block>
-  <l-status-show full-screen="{{false}}" show="{{empty}}" type="data"></l-status-show>
+  <l-status-show l-class="empty-show" full-screen="{{false}}" show="{{empty}}" type="data" describe="暂时还没有相关优惠劵哦~"></l-status-show>
 </view>
 

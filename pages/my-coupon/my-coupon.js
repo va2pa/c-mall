@@ -12,7 +12,8 @@ Page({
     availableCopuons:[],
     usedCopuons:[],
     expiredCopuons:[],
-    currentCoupons: []
+    currentCoupons: [],
+    status: 1
   },
 
   /**
@@ -39,47 +40,31 @@ Page({
         this.bindExpiredCoupons();
         break;
     }
+    console.log(this.data.currentCoupons);
   },
   bindAvailableCoupons(){
     const currentCoupons = this.data.availableCopuons;
-    if(currentCoupons.length === 0){
-      this.setData({
-        currentCoupons,
-        empty: true
-      });
-    }else{
-      this.setData({
-        currentCoupons,
-        empty: false
-      });
-    }
+    this.setData({
+      currentCoupons,
+      empty: currentCoupons.length === 0,
+      status: CouponStatus.AVAILABLE
+    });
+
   },
   bindUsedCoupons(){
     const currentCoupons = this.data.usedCopuons;
-    if(currentCoupons.length === 0){
-      this.setData({
-        currentCoupons,
-        empty: true
-      });
-    }else{
-      this.setData({
-        currentCoupons,
-        empty: false
-      });
-    }
+    this.setData({
+      currentCoupons,
+      empty: currentCoupons.length === 0,
+      status: CouponStatus.USED
+    });
   },
   bindExpiredCoupons(){
     const currentCoupons = this.data.expiredCopuons;
-    if(currentCoupons.length === 0){
-      this.setData({
-        currentCoupons,
-        empty: true
-      });
-    }else{
-      this.setData({
-        currentCoupons,
-        empty: false
-      });
-    }
+    this.setData({
+      currentCoupons,
+      empty: currentCoupons.length === 0,
+      status: CouponStatus.EXPIRED
+    });
   }
 })

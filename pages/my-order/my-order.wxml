@@ -1,2 +1,18 @@
 <!--pages/my-order/my-order.wxml-->
-<text>pages/my-order/my-order.wxml</text>
+
+<l-segment bind:linchange="changeTabs" l-class="seg">
+  <l-segment-item tab="待支付" key="1" />
+  <l-segment-item tab="已支付" key="2" />
+  <l-segment-item tab="已发货" key="3" />
+  <l-segment-item tab="已完成" key="4" />
+  <l-segment-item tab="已取消" key="5" />
+</l-segment>
+
+
+<view class="container">
+  <block wx:for="{{orderItems}}" wx:key="index">
+    <brief-order item="{{item}}"></brief-order>
+  </block>
+
+  <l-status-show l-class="empty-show" full-screen="{{false}}" show="{{empty}}" type="data" describe="暂时还没有相关订单哦~"></l-status-show>
+</view>

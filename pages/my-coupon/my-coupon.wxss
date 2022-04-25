@@ -2,9 +2,18 @@
 page{
   background-color: #fff;
 }
+
+.seg{
+  position: fixed;
+  background-color: #fff !important;
+}
+
 .container {
-  padding-top: 26rpx;
+  padding-top: 80rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.empty-show {
+  padding-top: 100rpx;
 }

@@ -21,22 +21,14 @@ Page({
   async initBottomSpuList(cid){
     this.data.spuPaging = SpuPaging.getByCategory(cid);
     const data = await this.data.spuPaging.applyMoreData();
-    if(data.accumulator.length !== 0){
-      this.bindItems(data)
-    }else{
-      this.setData({
-        empty: true
-      });
-    }
+    this.bindItems(data);
   },
 
   bindItems(data) {
-    if (data.accumulator.length !== 0) {
-        this.setData({
-            items: data.accumulator,
-            empty: false
-        })
-    }
+    this.setData({
+        items: data.accumulator,
+        empty: data.accumulator.length === 0
+    })
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -46,7 +38,9 @@ Page({
     if(!data){
       return;
     }
-    this.bindItems(data);
+    if (data.accumulator.length !== 0) {
+      this.bindItems(data);
+    }
     if(!data.moreData){
       this.setData({
         loadingType: 'end'

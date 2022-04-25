@@ -28,15 +28,17 @@
                 <view class="ticket-detail-container">使用规则
                   <l-icon name="down" size="16" color="#999"/>
                 </view>
-                <l-button data-id="{{_coupon.id}}" bind:lintap="onGetCoupon" l-class height="50" size="mini" shape="semicircle" plain="{{true}}">
+                
                 <view wx:if="{{_status === 0}}">
-                  点击领取
+                  <l-button data-id="{{_coupon.id}}" bind:lintap="onGetCoupon" l-class height="50" size="mini" shape="semicircle" plain="{{true}}">
+                  点击领取</l-button>
                 </view>
                 <view wx:if="{{_status === 1}}">
-                  立即使用
+                  <l-button data-id="{{_coupon.id}}" bind:lintap="onGetCoupon" l-class height="50" size="mini" shape="semicircle" plain="{{true}}">
+                  立即使用</l-button>
                 </view>
                 
-                </l-button>
+                
               </view>
               <text space="ensp">1、{{_coupon.remark}}\n2、本优惠券不与其他优惠劵同享                           </text>
             </l-collapse-item>

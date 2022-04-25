@@ -42,6 +42,7 @@
     "l-radio": "/miniprogram_npm/lin-ui/radio/index",
     "l-avatar": "/miniprogram_npm/lin-ui/avatar/index",
     "l-list": "/miniprogram_npm/lin-ui/list/index",
+    "l-countdown": "/miniprogram_npm/lin-ui/countdown/index",
     "spu-preview": "/components/spu-preview/spu-preview",
     "order-item": "/components/order-item/order-item",
     "coupon": "/components/coupon/coupon",

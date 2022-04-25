@@ -1,5 +1,6 @@
 import { Caculator } from "../utils/caculator"
 import { Http } from "../utils/http"
+import { Paging } from "../utils/paging"
 
 class Order {
   orderItems
@@ -22,6 +23,24 @@ class Order {
     return await Http.request({
         url: `order/fakepay/${orderId}`,
         method: 'POST'
+    })
+  }
+
+  static geMyOrdersByStatus(status) {
+    return new Paging({
+        url: `order/by/status/${status}`
+    })
+  }
+
+  static geMyOrdersUnpaid() {
+    return new Paging({
+        url: 'order/status/unpaid'
+    })
+  }
+
+  static geMyOrdersCanceled() {
+    return new Paging({
+        url: 'order/status/canceled'
     })
   }
 
