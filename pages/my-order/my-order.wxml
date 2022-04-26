@@ -22,6 +22,7 @@
   show="{{showFakePay}}"
   type="confirm"  
   title=""
+  show-title="{{false}}"
   content="确定支付吗？"
   confirm-text="支付"
   confirm-color="#f60"

@@ -4,7 +4,7 @@
                   l-class="avatar" 
                   open-data="{{['userAvatarUrl','userNickName']}}">
         </l-avatar>
-        <l-button wx:if="{{true}}" l-class="auth-btn"
+        <l-button wx:if="{{vip}}" l-class="auth-btn"
                   bg-color="#DCEBE6"
                   height="48"
                   width="120">

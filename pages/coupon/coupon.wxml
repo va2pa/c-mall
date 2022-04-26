@@ -3,3 +3,11 @@
     <coupon coupon="{{item}}" status="0"></coupon>
   </block>
 </view>
+
+<l-dialog 
+  show="{{showVipTip}}"
+  type="alert"  
+  show-title="{{false}}"
+  title=""
+  bind:linconfirm="onConfirm"
+  content="您还不是会员哦 ~" />

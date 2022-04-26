@@ -3,18 +3,23 @@ import { promisic } from "../utils/util";
 
 class Jwt {
 
-  async makeTokenlegal() {
+    static async makeTokenlegal() {
       const token = wx.getStorageSync('token');
       console.log('token====================')
       console.log(token)
       if (!token) {
-          await this.getTokenFromServer()
+          await Jwt.getTokenFromServer()
       } else {
-          await this.verifyByServer(token)
+          await Jwt.verifyByServer(token)
       }
   }
 
-  async getTokenFromServer() {
+  static async resendTokenRequest() {
+      wx.removeStorageSync('token');
+      await Jwt.getTokenFromServer();
+  }
+
+  static async getTokenFromServer() {
       const { code } = await wx.login();
       const res = await promisic(wx.request)({
           url: `${config.apiBaseUrl}token/login`,
@@ -27,7 +32,7 @@ class Jwt {
       return res.data.token
   }
 
-  async verifyByServer(token) {
+  static async verifyByServer(token) {
       const res = await promisic(wx.request)({
           url: `${config.apiBaseUrl}token/verify`,
           method: 'POST',
@@ -37,7 +42,7 @@ class Jwt {
       });
       const valid = res.data.is_valid
       if (!valid) {
-          return this.getTokenFromServer()
+          return Jwt.getTokenFromServer()
       }
   }
 

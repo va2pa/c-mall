@@ -1,6 +1,5 @@
 <l-loadmore show type="{{loadingType}}">
   <view slot="content">
-    <image class="top-theme" src="{{themeA.entrance_img}}"></image>
 
     <swiper class="swiper" autoplay circular indicator-dots>
       <block wx:for="{{bannerA.items}}" wx:key="index">
@@ -13,13 +12,14 @@
     <category-grid grid="{{categoryGrid}}"></category-grid>
 
     <image bind:tap="onCoupons" class="activity" src="{{activityA.entrance_img}}"></image>
+    <image bind:tap="onVipCoupons" class="top-theme" src="{{themeA.entrance_img}}"></image>
 
-    <theme-spu-scroll theme="{{themeB}}" spuList="{{themeBSpuList}}"></theme-spu-scroll>
+    <!-- <theme-spu-scroll theme="{{themeB}}" spuList="{{themeBSpuList}}"></theme-spu-scroll> -->
 
-    <image class="quality" src="{{themeC.entrance_img}}"></image>
+    <!-- <image class="quality" src="{{themeC.entrance_img}}"></image> -->
 
-    <hot-list banner="{{bannerB}}"></hot-list>
-    <image src="{{themeD.entrance_img}}" class="fashion" />
+    <!-- <hot-list banner="{{bannerB}}"></hot-list> -->
+    <!-- <image src="{{themeD.entrance_img}}" class="fashion" /> -->
 
     <view class="spu-bottom">
         <image class="title-spu-bottom" src="/imgs/home/title@interest.png" />

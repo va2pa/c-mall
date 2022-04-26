@@ -1,6 +1,6 @@
 <!--pages/my/my.wxml-->
 <view class="container">
-  <my-info></my-info>
+  <my-info vip="{{vip}}"></my-info>
   <view class="main-container">
     <s-my-order-panel></s-my-order-panel>
 
@@ -23,6 +23,19 @@
         l-class-content="list-item"
         title="我的订单"
       ></l-list>
+      <l-list
+        wx:if="{{!vip}}"
+        bind:lintap="onRegisterVip"
+        icon="user"
+        l-class-content="list-item"
+        title="申请会员"
+      ></l-list>
     </view>
   </view>
 </view>
+<l-dialog 
+  show="{{showVipTip}}"
+  type="alert"  
+  show-title="{{false}}"
+  title=""
+  content="{{vipTip}}" />

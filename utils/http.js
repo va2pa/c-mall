@@ -1,8 +1,9 @@
 import {config} from '../config/config';
+import { Jwt } from '../model/jwt';
 import {promisic} from '../utils/util'
 
 class Http{
-  static async request({url, data, method='GET', throwError=false}){
+  static async request({url, data, method='GET', throwError=false,noResend=false}){
     let res;
     try{
       res = await promisic(wx.request)({
@@ -24,11 +25,12 @@ class Http{
       return res.data;
     } else {
       if (code === '401') {
-        if (!data.noResend) {
-            Http._resend({
+        if (!noResend) {
+            return await Http._resend({
                 url,
                 data,
-                method
+                method,
+                throwError
             })
         }
       }else{
@@ -36,9 +38,10 @@ class Http{
           throw {errorCode : res.data.code,
                 statusCode : code,
                 message : res.data.message};
+        }else{
+          Http.showError(res.data.message);
         }
-        console.log(res.data);
-        Http.showError(res.data.message);
+        
       }
     }
     return res.data
@@ -53,10 +56,9 @@ class Http{
     })
   }
 
-  static async _refetch(data) {
+  static async _resend(data) {
     data.noResend = true;
-    const jwt = new jwt();
-    await jwt.getTokenFromServer();
+    await Jwt.getTokenFromServer();
     return await Http.request(data)
   }
 }

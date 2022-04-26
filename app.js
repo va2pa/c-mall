@@ -10,8 +10,7 @@ App({
         index: 2,
       })
     }
-    const jwt = new Jwt();
-    jwt.makeTokenlegal();
+    Jwt.makeTokenlegal();
     // const token = new Token()
     // token.verify()
 

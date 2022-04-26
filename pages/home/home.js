@@ -47,6 +47,7 @@ Page({
     const categoryGrid = await Category.getHomeLocation3();
     const activityA = await Activity.getHomeLocation4();
     const themeB = themeObj.getHomeLocation5();
+    console.log()
     let themeBSpuList = [];
     if(themeB.online){
       const themeBwithSpu = await Theme.getThemeWithSpu(Theme.getHomeLocation5Name());
@@ -96,6 +97,12 @@ Page({
   onCoupons(event) {
     wx.navigateTo({
         url: `/pages/coupon/coupon?name=${Activity.activityName}`
+    });
+  },
+  onVipCoupons(event) {
+
+    wx.navigateTo({
+        url: `/pages/coupon/coupon?name=${Activity.vipActivityName}&type=vip`
     });
   },
 
