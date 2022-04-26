@@ -26,6 +26,12 @@ class Order {
     })
   }
 
+  static async getDetail(orderId) {
+    return await Http.request({
+        url: `order/detail/${orderId}`
+    })
+  }
+
   static geMyOrdersByStatus(status) {
     return new Paging({
         url: `order/by/status/${status}`

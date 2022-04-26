@@ -4,15 +4,15 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    address: Object,
+    hasChosen: false,
+    readOnly: false
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    address: Object,
-    hasChosen: false
   },
 
   /**
@@ -20,10 +20,14 @@ Component({
    */
   methods: {
     async onChooseAddress(event) {
+      if(this.properties.readOnly){
+        return;
+      }
       this.getUserAddress()
     },
     async getUserAddress() {
         const addressInfo = await wx.chooseAddress({});
+        console.log(addressInfo);
         console.log(addressInfo);
         if (addressInfo) {
             this.setData({

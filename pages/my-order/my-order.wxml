@@ -11,8 +11,19 @@
 
 <view class="container">
   <block wx:for="{{orderItems}}" wx:key="index">
-    <brief-order item="{{item}}"></brief-order>
+    <brief-order bind:countdownEnd="countdownEnd" bind:onPay="onPay" item="{{item}}"></brief-order>
   </block>
 
   <l-status-show l-class="empty-show" full-screen="{{false}}" show="{{empty}}" type="data" describe="暂时还没有相关订单哦~"></l-status-show>
 </view>
+<l-dialog 
+  bind:linconfirm="onConfirmPay"
+  bind:lincancel="onCancelPay"
+  show="{{showFakePay}}"
+  type="confirm"  
+  title=""
+  content="确定支付吗？"
+  confirm-text="支付"
+  confirm-color="#f60"
+  cancel-text="取消"
+  cancel-color="#999" />

@@ -1,4 +1,4 @@
-import { parseSpecs } from "../../utils/sku";
+import { parseSpecs, parseSpecValues } from "../../utils/sku";
 
 // components/order-item/order-item.js
 Component({
@@ -19,8 +19,15 @@ Component({
   observers: {
     'orderItem': function (orderItem) {
       console.log(orderItem)
+      let specValuesText;
+      if(orderItem.spec_values){
+        specValuesText = parseSpecValues(orderItem.spec_values);
+        console.log(specValuesText);
+      }else{
+        specValuesText = parseSpecs(orderItem.sku.specs);
+      }
       this.setData({
-        specValuesText: parseSpecs(orderItem.sku.specs)
+        specValuesText
       })
     }
   },

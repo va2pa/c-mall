@@ -1,3 +1,6 @@
+import { Order } from "../../model/order";
+import { OrderBO } from "../../model/order-bo"
+
 // pages/order-detail/order-detail.js
 Page({
 
@@ -5,64 +8,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    oid: Number
+    _options: Object,
+    orderId: null,
+    showFakePay: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.data.oid = options.oid;
-    console.log("=======order-detail==========");
-    console.log(this.data.oid);
+  async onLoad(options) {
+    this.data._options = options;
+    this.data.orderId = options.oid;
+    const order = await Order.getDetail(this.data.orderId);
+    const _order = new OrderBO(order);
+    console.log(_order);
+    this.setData({
+      order: _order
+    })
+  },
+  onPay(event){
+    this.setData({
+      showFakePay: true
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  async onConfirmPay(){
+    this.setData({
+      showFakePay: false
+    });
+    await Order.fakePayOrder(this.data.orderId);
+    wx.redirectTo({
+      url: `/pages/pay-success/pay-success?oid=${this.data.orderId}`,
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onCancelPay(){
+    this.setData({
+      showFakePay: false
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

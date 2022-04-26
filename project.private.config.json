@@ -83,6 +83,12 @@
           "pathName": "pages/my-order/my-order",
           "query": "status=0",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/order-detail/order-detail",
+          "query": "oid=407",
+          "scene": null
         }
       ]
     }

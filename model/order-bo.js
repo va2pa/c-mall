@@ -10,7 +10,7 @@ class OrderBO {
       Object.assign(this, OrderBO)
       this.correctOrderStatus()
       this.calDiscountPrice()
-      this.createTime = getSlashYMDHMS(OrderBO.create_time)
+      this.createTime = getSlashYMDHMS(OrderBO.placed_time)
   }
 
   calDiscountPrice() {

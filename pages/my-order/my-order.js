@@ -10,7 +10,9 @@ Page({
   data: {
     orderPaging: Object,
     orderItems:[],
-    empty: false
+    empty: false,
+    showFakePay: false,
+    payOrderId: null
   },
 
   /**
@@ -18,6 +20,9 @@ Page({
    */
   async onLoad(options) {
     // const orderPaging = Order.geMyOrdersByStatus(2);
+
+  },
+  async onShow(){
     const orderPaging = Order.geMyOrdersUnpaid();
     this.data.orderPaging = orderPaging;
     console.log(orderPaging);
@@ -70,5 +75,31 @@ Page({
         loadingType: 'end'
       });
     }
-  }
+  },
+  countdownEnd(){
+    this.onLoad();
+  },
+
+  onPay(event){
+    this.data.payOrderId = event.detail.orderId;
+    this.setData({
+      showFakePay: true
+    });
+  },
+  async onConfirmPay(){
+    this.setData({
+      showFakePay: false
+    });
+    await Order.fakePayOrder(this.data.payOrderId);
+    wx.navigateTo({
+      url: `/pages/pay-success/pay-success?oid=${this.data.payOrderId}`,
+    });
+  },
+
+  onCancelPay(){
+    this.setData({
+      showFakePay: false
+    });
+  },
+
 })

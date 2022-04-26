@@ -32,11 +32,18 @@ Component({
    */
   methods: {
     onDetail(event) {
-      console.log(this.data._item)
       const oid = this.data._item.id
       wx.navigateTo({
           url: `/pages/order-detail/order-detail?oid=${oid}`
       })
     },
+    onCountdownEnd(){
+      this.triggerEvent('countdownEnd');
+    },
+    onPay(){
+      this.triggerEvent('onPay',{
+        'orderId': this.properties.item.id
+      });
+    }
   }
 })

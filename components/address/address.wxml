@@ -15,17 +15,17 @@
     <view class="address-inner">
       <view class="base-info">
         <l-icon name="address" size="36" ></l-icon>
-        <text class="name">{{address.userName}}</text>
-        <text>{{address.telNumber}}</text>
+        <text class="name">{{address.userName || address.user_name}}</text>
+        <text>{{address.telNumber || address.mobile}}</text>
       </view>
       <view class="address-info">
-        <text>{{address.provinceName}}</text>
-        <text>{{address.cityName}}</text>
-        <text>{{address.countyName}}</text>
-        <text>{{address.detailInfo}}</text>
+        <text>{{address.provinceName || address.province}}</text>
+        <text>{{address.cityName || address.city}}</text>
+        <text>{{address.countyName || address.county}}</text>
+        <text>{{address.detailInfo || address.detail}}</text>
       </view>
     </view>
-    <l-icon style="font-weight: bold" name="right" size="30"></l-icon>
+    <l-icon wx:if="{{!readOnly}}" style="font-weight: bold" name="right" size="30"></l-icon>
   </view>
 
 </view>
