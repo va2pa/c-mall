@@ -63,7 +63,7 @@
   font-size: 24rpx;
 }
 .specs > text:nth-child(2){
-  color:#157658;
+  color:#333333;
   font-size: 24rpx;
 } 
 .explain{

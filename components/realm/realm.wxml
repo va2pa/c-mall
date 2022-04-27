@@ -8,7 +8,7 @@
         <view class="price-row">
           <l-price
               autofix
-              color="#157656"
+              color="#333333"
               value="{{p.mainPrice(price,discountPrice)}}"
               value-size="28"></l-price>
           <l-price wx:if="{{p.slashedPrice(price,discountPrice)}}"
@@ -40,8 +40,8 @@
   </view>
 </scroll-view>
 <view wx:if="{{!outStock}}" class="bottom-btn" bind:tap="onCartOrBuy">
-  <text wx:if="{{shoppingWay === 'cart'}}">加入购物车</text>
-  <text wx:else>立即购买</text>
+  <text wx:if="{{shoppingWay === 'cart'}}" class="bottom-btn-cart">加入购物车</text>
+  <text wx:else class="bottom-btn-buy" >立即购买</text>
 </view>
 <view wx:else class="bottom-btn out-stock">
   <text>暂时缺货</text>

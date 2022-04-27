@@ -14,7 +14,7 @@
     </view>
     <view class="price-container">
       <text>合计</text>
-      <l-price value="{{totalPrice}}" color="#157658" count-size="32" unit-size="32"></l-price>
+      <l-price value="{{totalPrice}}" color="#F08080" count-size="32" unit-size="32"></l-price>
     </view>
   </view>
   <view bind:tap="onSettleBtn" class="settlement-btn {{totalSkuCount===0?'disabled':''}}">

@@ -21,12 +21,12 @@
 }
 
 .s-outer{
-  border: 2rpx solid #157658;
+  border: 2rpx solid #666;
   color: #fff;
 }
 
 .s-inner{
-  background-color: #157658;
+  background-color: #666;
 }
 
 .img{

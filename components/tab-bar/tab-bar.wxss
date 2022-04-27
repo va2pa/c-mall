@@ -44,12 +44,12 @@
   align-items: center;
 }
 .buy{
-  background-color: #157658;
+  background-color: #000000;
   width: 260rpx;
   height: 100%;
 }
 .cart{
-  background-color: #333;
+  background-color: #FFA500;
   width: 260rpx;
   height: 100%;
 }

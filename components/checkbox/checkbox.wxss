@@ -11,12 +11,12 @@
 }
 
 .bg-checked{
-  background-color: #157658;
+  background-color: #808080;
 }
 
 .bg-unchecked{
-  background-color: #DCEBE6 ;
-  border: 2rpx solid #157658;
+  background-color: #fff ;
+  border: 2rpx solid #808080;
 }
 
 .mall {

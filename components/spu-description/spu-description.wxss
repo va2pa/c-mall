@@ -15,13 +15,6 @@
   display: flex;
   flex-direction: column;
 }
-.tags{
-
-  display: flex;
-}
-l-tag{
-  margin-right: 6rpx !important;
-}
 
 .subtitle{
   color: #999;

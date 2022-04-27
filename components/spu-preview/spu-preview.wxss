@@ -19,22 +19,7 @@
   /* height: 360rpx; */
 }
 
-.tags {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 8rpx;
-  margin-top: 6rpx;
-  flex-wrap: wrap;
-}
 
-.l-tag {
-  background-color: #DCEBE6 !important;
-  color: #157658 !important;
-  height: 36rpx !important;
-  padding-left: 6rpx !important;
-  padding-right: 6rpx !important;
-  margin-right: 5rpx !important;
-}
 
 .title {
   font-size: 28rpx;

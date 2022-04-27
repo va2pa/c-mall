@@ -1,12 +1,12 @@
 <view class="container">
   <view class="icons">
     <view bind:tap="onGotoHome">
-      <l-icon name="home" size="46" color="#157658" l-class="mall"></l-icon>
+      <l-icon name="home" size="46" color="#000000" l-class="mall"></l-icon>
       <text class>首页</text>
     </view>
     <view bind:tap="onGotoCart">
       <l-badge show="{{cartItemCount!==0}}" value="{{cartItemCount}}">
-        <l-icon name="cart" size="44" color="#157658"></l-icon>
+        <l-icon name="cart" size="44" color="#000000"></l-icon>
       </l-badge>
       <text class>购物车</text>
     </view>

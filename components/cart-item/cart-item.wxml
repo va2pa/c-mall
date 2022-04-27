@@ -27,7 +27,7 @@
 
           <view class="price-container">
             <l-price
-              color="#157658"
+              color="#F08080"
               count-size="28"
               value="{{p.mainPrice(cartItem.sku.price,cartItem.sku.discount_price)}}"
             ></l-price>

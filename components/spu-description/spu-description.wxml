@@ -3,21 +3,11 @@
 <view class="container">
   <view class="left">
     <text class="title">{{spu.title}}</text>
-    <view class="tags">
-      <block wx:for="{{tags}}">
-        <l-tag
-          type="reading"
-          bg-color="#DCEBE6"
-          font-color="#157658"
-          size="super-mini"
-          l-class=" l-tag"
-        >{{item}}</l-tag>
-      </block>
-    </view>
+
     <text class="subtitle">{{spu.subtitle}}</text>
     <view class="price-row">
       <l-price
-        color="#157658"
+        color="#F08080"
         value-size="28"
         unit-size="20"
         autofix
