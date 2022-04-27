@@ -14,13 +14,6 @@ class Activity{
         url: `activity/name/${activityName}/with_coupon`
     })
   }
-
-  static async getVipActivityWithCoupon(activityName) {
-    return await Http.request({
-        url: `activity/name/${activityName}/with_coupon/vip`,
-        throwError: true
-    })
-  }
 }
 
 export{

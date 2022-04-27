@@ -10,9 +10,8 @@
     </swiper>
 
     <category-grid grid="{{categoryGrid}}"></category-grid>
-
     <image bind:tap="onCoupons" class="activity" src="{{activityA.entrance_img}}"></image>
-    <image bind:tap="onVipCoupons" class="top-theme" src="{{themeA.entrance_img}}"></image>
+    <image bind:tap="onVipCoupons" class="top-theme" src="/imgs/home/activity@vip.jpg"></image>
 
     <!-- <theme-spu-scroll theme="{{themeB}}" spuList="{{themeBSpuList}}"></theme-spu-scroll> -->
 
@@ -27,3 +26,10 @@
     </view>
   </view>
 </l-loadmore>
+<l-dialog 
+  show="{{showVipTip}}"
+  type="alert"  
+  show-title="{{false}}"
+  title=""
+  bind:linconfirm="onConfirm"
+  content="您还不是会员哦 ~" />

@@ -6,7 +6,11 @@
       </swiper-item>
     </block>
   </swiper>
-  <spu-description spu="{{spu}}"></spu-description>
+  <spu-description spu="{{spu}}"
+                   bind:like="onLike"
+                   likeStatus="{{likeStatus}}"
+                   favorNum="{{favorNum}}"
+                   doubleLike="{{doubleLike}}" />
   <view bind:tap="onAddToCart" wx:if="{{!spec.noSpec}}" class="sku-pending">
     <view class="specs">
       <text wx:if="{{!spec.isSkuIntact}}">请选择：</text>
@@ -16,8 +20,8 @@
     </view>
     <l-icon name="right" color="#187790" size="24" />
   </view>
-  <view class="explain">
-    <spu-explain texts="{{explain}}"></spu-explain>
+  <view class="explain" bindtap="doubleClick" >
+    <spu-explain texts="{{explain}}" ></spu-explain>
   </view>
   <view class="detail-img-container">
     <block wx:for="{{spu.spu_detail_img_list}}" wx:key="index">

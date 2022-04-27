@@ -41,3 +41,13 @@ l-tag{
 .l-price-unit{
   margin-right: 14rpx !important;
 }
+.right{
+  margin-top: 10rpx;
+  margin-right: 35rpx;
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-end;
+
+}
+
+

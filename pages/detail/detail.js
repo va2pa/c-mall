@@ -13,7 +13,11 @@ Page({
     spu: null,
     cartItemCount:0,
     showRealm: false,
-    shoppingWay: ShoppingWay.CART
+    shoppingWay: ShoppingWay.CART,
+    lastTapTime: 0,
+    likeStatus: false,
+    favorNum: 0,
+    doubleLike: false
   },
 
   /**
@@ -22,14 +26,19 @@ Page({
   onLoad: async function (options) {
     const pid = options.pid;
     const spu = await Spu.getDetail(pid);
+    const likeMsg = await Spu.isLike(pid);
     const explain = await SpuExplain.getExplain();
-
     const windowHeightRpx = await getWindowHeightRpx();
     const swiperH = windowHeightRpx - 60 - 20 - 2
+    const likeStatus = likeMsg.is_like;
+    console.log(likeMsg);
+    console.log(likeStatus);
     this.setData({
       spu,
+      likeStatus,
       explain,
-      swiperH
+      swiperH,
+      favorNum: spu.favor_num
     });
     this.updateCartItemCount();
   },
@@ -87,7 +96,6 @@ Page({
         cart.addItem(cartItem);
         this.updateCartItemCount();
     }
-
   },
   updateCartItemCount() {
     const cart = new Cart()
@@ -96,5 +104,33 @@ Page({
         showRealm: false
     })
   },
+  onLike(event){
+    this.data.likeStatus = event.detail.likeStatus;
+    if(this.data.likeStatus){
+      Spu.like(this.data.spu.id);
+    }else{
+      Spu.disLike(this.data.spu.id);
+    }
+  },
+  doubleClick(e) {
+    var curTime = e.timeStamp;
+    var lastTime = this.data.lastTapTime;
+    if (curTime - lastTime > 0) {
+      if (curTime - lastTime < 300) {
+        if(!this.data.likeStatus){
+          console.log('doubleLike');
+          this.setData({
+            likeStatus: true,
+            doubleLike: true
+          })
+          e.detail.likeStatus = true;
+          this.onLike(e);
+        }
+      }
+    }
+    this.setData({
+      lastTapTime: curTime
+    })
+  }
   
 })

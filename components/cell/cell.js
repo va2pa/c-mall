@@ -26,8 +26,8 @@ Component({
         x: this.properties.x,
         y: this.properties.y
       },{
-        bubbles: true,    //开启冒泡
-        composed: true    //开启跨组件
+        bubbles: true,
+        composed: true
       });
     }
   }

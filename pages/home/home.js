@@ -3,6 +3,8 @@ import {Banner} from '../../model/banner'
 import {Category} from '../../model/category'
 import {Activity} from '../../model/activity'
 import {SpuPaging} from '../../model/spu-paging'
+import { User } from '../../model/user';
+
 // pages/home/home.js
 Page({
   /**
@@ -19,7 +21,8 @@ Page({
     bannerB: null,
     themeD: null,
     spuPaging: null,
-    loadingType: 'loading'
+    loadingType: 'loading',
+    showVipTip: false
   },
 
   /**
@@ -99,10 +102,19 @@ Page({
         url: `/pages/coupon/coupon?name=${Activity.activityName}`
     });
   },
-  onVipCoupons(event) {
-
+  async onVipCoupons(event) {
+    try{
+      await User.checkVip()
+    }catch(e){
+      if(e.errorCode === 1005){
+        this.setData({
+          showVipTip: true
+        });
+      }
+      return;
+    }
     wx.navigateTo({
-        url: `/pages/coupon/coupon?name=${Activity.vipActivityName}&type=vip`
+        url: `/pages/coupon/coupon?name=${Activity.vipActivityName}`
     });
   },
 

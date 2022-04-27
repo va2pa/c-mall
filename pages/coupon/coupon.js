@@ -15,22 +15,8 @@ Page({
    */
   async onLoad(options) {
     console.log(options);
-    let activityName;
-    let activity;
-    if(options.type === 'vip'){
-      activityName = options.name;
-      try{
-        activity = await Activity.getVipActivityWithCoupon(activityName)
-      }catch(e){
-        this.setData({
-          showVipTip: true
-        })
-        return;
-      }
-    }else{
-      activityName = options.name
-      activity = await Activity.getActivityWithCoupon(activityName)
-    }
+    const activityName = options.name
+    const activity = await Activity.getActivityWithCoupon(activityName)
     const couponList = activity.coupons
     console.log(couponList);
 

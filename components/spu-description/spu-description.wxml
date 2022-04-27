@@ -34,4 +34,7 @@
       ></l-price>
     </view>
   </view>
+  <view class="right">
+    <like isLike="{{likeStatus}}" doubleLike="{{doubleLike}}" count="{{favorNum}}"></like>
+  </view>
 </view>
