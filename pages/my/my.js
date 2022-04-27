@@ -47,7 +47,7 @@ Page({
 
   onMyFavor(){
     wx.navigateTo({
-      url: "/pages/my-favor/my-favor"
+      url: "/pages/spu-list/spu-list?favor=true"
     })
   },
 

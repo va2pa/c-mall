@@ -13,16 +13,24 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.initBottomSpuList(options.cid);
-  },
+  async onLoad(options) {
+    let spuPaging;
+    if(options.cid){
+      console.log('qqqqq')
 
-
-  async initBottomSpuList(cid){
-    this.data.spuPaging = SpuPaging.getByCategory(cid);
+      spuPaging = SpuPaging.getByCategory(options.cid);
+    }
+    if(options.favor){
+      console.log('ppppppppp')
+      spuPaging = SpuPaging.getMyFavor();
+    }
+    this.data.spuPaging = spuPaging;
     const data = await this.data.spuPaging.applyMoreData();
+    console.log(data);
     this.bindItems(data);
   },
+
+
 
   bindItems(data) {
     this.setData({

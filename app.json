@@ -13,8 +13,7 @@
     "pages/pay-success/pay-success",
     "pages/my-order/my-order",
     "pages/order-detail/order-detail",
-    "pages/my-coupon/my-coupon",
-    "pages/my-favor/my-favor"
+    "pages/my-coupon/my-coupon"
   ],
   "usingComponents": {
     "l-grid": "/miniprogram_npm/lin-ui/grid/index",

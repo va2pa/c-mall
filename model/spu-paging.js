@@ -18,6 +18,12 @@ class SpuPaging{
         url: `spu/search?keyword=${keyword}`
     })
   }
+
+  static getMyFavor() {
+    return new Paging({
+        url: 'spu/myself/favor'
+    })
+  }
 }
 
 export {
