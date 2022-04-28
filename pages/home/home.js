@@ -117,5 +117,10 @@ Page({
         url: `/pages/coupon/coupon?name=${Activity.vipActivityName}`
     });
   },
+  onGotoSearch(event) {
+    wx.navigateTo({
+        url: '/pages/search/search',
+    });
+  },
 
 })

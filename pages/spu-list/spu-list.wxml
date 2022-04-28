@@ -5,7 +5,7 @@
           <spu-preview-h data="{{item}}"></spu-preview-h>
         </block>
         <view wx:if="{{empty}}">
-          <l-status-show show="{{true}}" type="product" describe="该分类下暂时没有商品~~"></l-status-show>
+          <l-status-show show="{{true}}" type="product"></l-status-show>
         </view>
       </view>
     </l-loadmore>

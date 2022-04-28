@@ -1,17 +1,24 @@
+<view class="container">
+  <view class="search-container">
+    <l-button
+      width="710"
+      height="60"
+      icon="research"
+      icon-size="24"
+      icon-color="#c4c9d2"
+      l-class="search-btn"
+      bind:lintap="onGotoSearch"
+      shape="square"
+    >搜索商品</l-button>
+  </view>
+</view>
 <l-loadmore show type="{{loadingType}}">
   <view slot="content">
 
-    <swiper class="swiper" autoplay circular indicator-dots>
-      <block wx:for="{{bannerA.items}}" wx:key="index">
-        <swiper-item>
-          <image class="swiper" src="{{item.img}}"></image>
-        </swiper-item>
-      </block>
-    </swiper>
 
     <category-grid grid="{{categoryGrid}}"></category-grid>
     <image bind:tap="onCoupons" class="activity" src="/imgs/home/activity@1.png"></image>
-    <image bind:tap="onVipCoupons" class="top-theme" src="/imgs/home/activity@vip.png"></image>
+    <image bind:tap="onVipCoupons" class="vip-activity" src="/imgs/home/activity@vip.png"></image>
 
     <!-- <theme-spu-scroll theme="{{themeB}}" spuList="{{themeBSpuList}}"></theme-spu-scroll> -->
 

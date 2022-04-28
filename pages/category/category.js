@@ -58,16 +58,11 @@ onGoToSpuList(event) {
 
   async setSegmentHeight() {
     const windowHeightRpx = await getWindowHeightRpx();
-    const segHeight = windowHeightRpx - 60 - 20 - 2
+    const segHeight = windowHeightRpx - 60 - 2
     this.setData({
         segHeight: segHeight
     })
   },
 
-  onGotoSearch(event) {
-    wx.navigateTo({
-        url: '/pages/search/search',
-    });
-  },
 
 })
