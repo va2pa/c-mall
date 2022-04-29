@@ -4,7 +4,7 @@ class SpuPaging{
   static getLatestPaging(){
     return new Paging({
       url:'spu/latest'
-    });
+    },6);
   }
 
   static getByCategory(cid){

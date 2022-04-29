@@ -20,12 +20,6 @@
     <image bind:tap="onCoupons" class="activity" src="/imgs/home/activity@1.png"></image>
     <image bind:tap="onVipCoupons" class="vip-activity" src="/imgs/home/activity@vip.png"></image>
 
-    <!-- <theme-spu-scroll theme="{{themeB}}" spuList="{{themeBSpuList}}"></theme-spu-scroll> -->
-
-    <!-- <image class="quality" src="{{themeC.entrance_img}}"></image> -->
-
-    <!-- <hot-list banner="{{bannerB}}"></hot-list> -->
-    <!-- <image src="{{themeD.entrance_img}}" class="fashion" /> -->
 
     <view class="spu-bottom">
         <image class="title-spu-bottom" src="/imgs/home/title@interest.png" />

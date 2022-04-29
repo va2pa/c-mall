@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    defaultRootId: 24
+    defaultRootId: 1
   },
 
   /**
@@ -44,8 +44,7 @@ Page({
     console.log(subCategories);
     const currentRoot = categories.getRoot(rootId)
     this.setData({
-        subCategories,
-        currentBannerImg: currentRoot.img
+        subCategories
     })
 
 },
