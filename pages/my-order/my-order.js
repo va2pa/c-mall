@@ -19,7 +19,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    // const orderPaging = Order.geMyOrdersByStatus(2);
 
   },
   async onShow(){
@@ -77,7 +76,7 @@ Page({
     }
   },
   countdownEnd(){
-    this.onLoad();
+    this.onShow();
   },
 
   onPay(event){

@@ -11,6 +11,7 @@ Page({
   data: {
     categoryGrid: [],
     activityA:null,
+    activityB:null,
     spuPaging: null,
     loadingType: 'loading',
     showVipTip: false
@@ -35,10 +36,12 @@ Page({
 
   async initData(){
     const categoryGrid = await Category.getHomeLocation3();
-    const activityA = await Activity.getHomeLocation4();
+    const activityA = await Activity.getActivity('a-1');
+    const activityB = await Activity.getActivity('a-0');
     this.setData({
       categoryGrid,
       activityA,
+      activityB
     })
   },
   
@@ -67,7 +70,7 @@ Page({
   },
   onCoupons(event) {
     wx.navigateTo({
-        url: `/pages/coupon/coupon?name=${Activity.activityName}`
+        url: '/pages/coupon/coupon?name=a-1'
     });
   },
   async onVipCoupons(event) {
@@ -82,7 +85,7 @@ Page({
       return;
     }
     wx.navigateTo({
-        url: `/pages/coupon/coupon?name=${Activity.vipActivityName}`
+        url: '/pages/coupon/coupon?name=a-0'
     });
   },
   onGotoSearch(event) {

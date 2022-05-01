@@ -1,11 +1,10 @@
 import {Http} from '../utils/http';
 
 class Activity{
-  static activityName = 'a-2';
-  static vipActivityName = 'a-0';
-  static async getHomeLocation4(){
+
+  static async getActivity(activityName){
     return await Http.request({
-      url: `activity/name/${Activity.activityName}`
+      url: `activity/name/${activityName}`
     })
   }
 
