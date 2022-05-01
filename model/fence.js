@@ -17,16 +17,16 @@ class Fence{
     this.keyId = specs[0].key_id;
   }
 
-  setSketchImg(skuList){
-    this.cells.forEach(cell => {
-      const matchSku = skuList.find(sku => {
-        return sku.code.includes(cell.getCellCode());
-      });
-      if(matchSku){
-        cell.img = matchSku.img;
-      }
-    });
-  }
+  // setSketchImg(skuList){
+  //   this.cells.forEach(cell => {
+  //     const matchSku = skuList.find(sku => {
+  //       return sku.code.includes(cell.getCellCode());
+  //     });
+  //     if(matchSku){
+  //       cell.img = matchSku.img;
+  //     }
+  //   });
+  // }
 
   init(){
     this._initCells();
