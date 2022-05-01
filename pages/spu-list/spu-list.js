@@ -16,12 +16,14 @@ Page({
   async onLoad(options) {
     let spuPaging;
     if(options.cid){
-      console.log('qqqqq')
-
-      spuPaging = SpuPaging.getByCategory(options.cid);
+      if(options.is_root){
+        spuPaging = SpuPaging.getByRootCategory(options.cid);
+      }else{
+        spuPaging = SpuPaging.getByCategory(options.cid);
+      }
+      
     }
     if(options.favor){
-      console.log('ppppppppp')
       spuPaging = SpuPaging.getMyFavor();
     }
     this.data.spuPaging = spuPaging;

@@ -16,7 +16,7 @@
   <view slot="content">
 
 
-    <category-grid grid="{{categoryGrid}}"></category-grid>
+    <category-grid bind:itemtap="onGoToSpuList" grid="{{categoryGrid}}"></category-grid>
     <image bind:tap="onCoupons" class="activity" src="{{activityA.entrance_img}}"></image>
     <image bind:tap="onVipCoupons" class="vip-activity" src="{{activityB.entrance_img}}"></image>
 

@@ -1,7 +1,7 @@
 <view class="container">
   <l-grid l-class="inner-container">
     <block wx:for="{{grid}}" wx:key="index">
-      <l-grid-item slot="{{index}}" key="{{index}}">
+      <l-grid-item bind:linitemtap="onTapGridItem" slot="{{item.id}}" key="{{item.id}}">
         <view class="grid-item">
           <image class="img" src="{{item.img}}"></image>
           <text class="text">{{item.title}}</text>

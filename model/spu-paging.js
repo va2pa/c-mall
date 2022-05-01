@@ -9,7 +9,13 @@ class SpuPaging{
 
   static getByCategory(cid){
     return new Paging({
-      url: `spu/by/category/${cid}`
+      url: `spu/by/category/${cid}`,
+    });
+  }
+  
+  static getByRootCategory(cid){
+    return new Paging({
+      url: `spu/by/category/${cid}?is_root=true`,
     });
   }
 

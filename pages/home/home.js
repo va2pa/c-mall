@@ -93,5 +93,10 @@ Page({
         url: '/pages/search/search',
     });
   },
-
+  onGoToSpuList(event) {
+    const cid = event.detail.cid
+    wx.navigateTo({
+        url: `/pages/spu-list/spu-list?cid=${cid}&is_root=true`
+    });
+},
 })
