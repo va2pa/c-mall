@@ -115,17 +115,15 @@ Page({
   doubleClick(e) {
     var curTime = e.timeStamp;
     var lastTime = this.data.lastTapTime;
-    if (curTime - lastTime > 0) {
-      if (curTime - lastTime < 300) {
-        if(!this.data.likeStatus){
-          console.log('doubleLike');
-          this.setData({
-            likeStatus: true,
-            doubleLike: true
-          })
-          e.detail.likeStatus = true;
-          this.onLike(e);
-        }
+    if (curTime - lastTime > 0 && curTime - lastTime < 300) {
+      if(!this.data.likeStatus){
+        console.log('doubleLike');
+        this.setData({
+          likeStatus: true,
+          doubleLike: true
+        })
+        e.detail.likeStatus = true;
+        this.onLike(e);
       }
     }
     this.setData({

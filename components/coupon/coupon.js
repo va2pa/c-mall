@@ -37,6 +37,7 @@ Component({
     methods: {
         async onGetCoupon(event) {
             if (this.data._status === CouponStatus.AVAILABLE) {
+                // 如果按钮状态为可使用，跳转到分类页面
                 wx.switchTab({
                     url: '/pages/category/category',
                 });
@@ -44,16 +45,17 @@ Component({
             }
             const couponId = event.currentTarget.dataset.id
             let msg;
-            console.log(couponId);
             try {
                 msg = await Coupon.collectCoupon(couponId)
             } catch (e) {
                 if (e.errorCode === 6010) {
+                    // 后端响应码为6010，说明用户已领取过，弹出错误提示
                     this.setRepeatCollected()
                 }
                 return
             }
             if (msg.code === 0) {
+                // 后端响应码为0，说明请求成功，弹出成功提示
                 this.setFirstCollected()
             }
 

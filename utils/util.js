@@ -13,22 +13,28 @@ const promisic = function (func) {
       });
   };
 };
+
 const combination = function (arr, size) {
-    var r = [];
-    function _(t, a, n) {
-        if (n === 0) {
-            r[r.length] = t;
+    let r = [];
+    function dfs(a,ne) {
+        if(a.length === size){
+            r.push(a);
             return;
         }
-        for (var i = 0, l = a.length - n; i <= l; i++) {
-            var b = t.slice();
-            b.push(a[i]);
-            _(b, a.slice(i + 1), n - 1);
+        if (ne === arr.length) {
+            return;
+        }
+        for (let i = ne; i < arr.length; i++) {
+            let tmp = a.slice();
+            a.push(arr[i]);
+            dfs(a, i + 1);
+            a = tmp;
         }
     }
-    _([], arr, size);
+    dfs([], 0);
     return r;
 }
+
 export{
   promisic,
   combination

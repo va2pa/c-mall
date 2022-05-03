@@ -14,10 +14,6 @@ class Jwt {
       }
   }
 
-  static async resendTokenRequest() {
-      wx.removeStorageSync('token');
-      await Jwt.getTokenFromServer();
-  }
 
   static async getTokenFromServer() {
       const { code } = await wx.login();

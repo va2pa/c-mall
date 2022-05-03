@@ -70,7 +70,7 @@ Page({
       return;
     }
     if(msg.code === 0){
-      await Jwt.resendTokenRequest();
+      await Jwt.getTokenFromServer();
       this.setData({
         showVipTip: true,
         vipTip: "恭喜您成为会员 ！",
