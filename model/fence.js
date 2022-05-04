@@ -8,10 +8,10 @@ class Fence{
 
   constructor(specs){
     // specs:
-    // [{key_id: 1, key: "颜色", value_id: 45, value: "金属灰"},
-    // {key_id: 1, key: "颜色", value_id: 42, value: "青芒色"},
-    // {key_id: 1, key: "颜色", value_id: 42, value: "青芒色"},
-    // {key_id: 1, key: "颜色", value_id: 44, value: "橘黄色"}]
+    // [{key_id: 1, key: "颜色", value_id: 45, value: "灰色"},
+    // {key_id: 1, key: "颜色", value_id: 42, value: "青色"},
+    // {key_id: 1, key: "颜色", value_id: 42, value: "青色"},
+    // {key_id: 1, key: "颜色", value_id: 44, value: "橙色"}]
     this.specs = specs;
     this.key = specs[0].key;
     this.keyId = specs[0].key_id;
