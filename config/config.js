@@ -1,5 +1,5 @@
 const config = {
-  apiBaseUrl: 'http://localhost:8080/',
+  apiBaseUrl: 'http://121.43.103.92:5000/',
 }
 
 export {
